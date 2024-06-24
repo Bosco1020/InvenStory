@@ -116,5 +116,15 @@ describe("SignUp tests", () => {
             // Assert
             expect(res.status).to.equal(400);
         });
+
+        it("Responds with HTTP 400 if no Password", async () => {
+            // Arrange
+            const testUser = { ...newUser };
+            delete testUser.password;
+            // Act
+            const res = await request.post("/auth/SignUp").send(testUser);
+            // Assert
+            expect(res.status).to.equal(400);
+        });
     });
 });
