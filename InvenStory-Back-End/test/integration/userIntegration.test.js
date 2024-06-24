@@ -12,7 +12,7 @@ import Routes from "../../src/routes/Routes.js";
 import UserService from "../../src/services/User.service.js";
 
 import getTestUser from "../data/testUser.js";
-const { dbUsers, newUser } = await getTestUser();
+const { dbUsers, Users, newUser } = await getTestUser();
 
 
 
@@ -125,6 +125,16 @@ describe("SignUp tests", () => {
             const res = await request.post("/auth/SignUp").send(testUser);
             // Assert
             expect(res.status).to.equal(400);
+        });
+    });
+
+    describe("POST '/auth/Login' requests", () => {
+        it("Responds with HTTP 200 if successful", async () => {
+            // Arrange
+            // Act
+            const res = await request.post("/auth/Login").send(Users[0]);
+            // Assert
+            expect(res.status).to.equal(200);
         });
     });
 });

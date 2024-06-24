@@ -21,6 +21,19 @@ const getTestUser = async () => {
                 "__v": 0
             }
         ],
+        Users: [
+            {
+                "name": "Sammy",
+                "email": "SammE@example.com",
+                "password": "SamPass22!"
+            },
+
+            {
+                "name": "Jules",
+                "email": "JulYee@exp.co.uk",
+                "password": "Jul@Yee33"
+            }
+        ],
         newUser: {
             "name": "Siobahn",
             "email": "Siobahn@emails.com",
