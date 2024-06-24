@@ -66,6 +66,16 @@ describe("SignUp tests", () => {
             const res = await request.post("/auth/SignUp").send(newUser);
             // Assert
             expect(res.status).to.equal(201);
-        });        
+        });
+
+        it("Responds with user data if successful", async () => {
+            // Arrange
+            // Act
+            const res = await request.post("/auth/SignUp").send(newUser);
+            // Assert
+            expect(res.body.name).to.equal(newUser.name);
+            expect(res.body.email).to.equal(newUser.email);
+            expect(res.body.password).to.equal(newUser.password);
+        });
     });
 });
