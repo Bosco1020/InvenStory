@@ -23,8 +23,8 @@ const getTestUser = async () => {
         ],
         newUser: {
             "name": "Siobahn",
-            "email": "Sio@emails.fr",
-            "password": await hashPassword("Han@Sio42")
+            "email": "Siobahn@emails.com",
+            "password": "Hans!Sion42",
         }
     }
 }

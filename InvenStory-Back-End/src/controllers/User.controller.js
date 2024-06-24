@@ -40,7 +40,7 @@ export default class UserController {
         try {
             const user = await this.#service.login(req.body);
             if (!user.accessToken) { throw error; }
-            
+            //res.json(user);
             res.header("X-Access-Token", user.accessToken).status(200).json(user);
         } catch (error) {
             res.status(401).json(error);

@@ -1,6 +1,7 @@
 import { Router } from "express";
-//import UserValidator from "../middleware/User.validator.js";
+
 import UserController from "../controllers/User.controller.js";
+import UserValidator from "../middleware/User.validator.js";
 
 export default class Routes {
     #userController;
@@ -15,9 +16,9 @@ export default class Routes {
     }
 
     #openRoutes = () => {
-        this.#router.post("/auth/login", this.#userController.login)
+        this.#router.post("/auth/login", UserValidator.validateUser(), this.#userController.login)
 
-        this.#router.post("/auth/signup", this.#userController.addUser)
+        this.#router.post("/auth/signup", UserValidator.validateUser(), this.#userController.addUser)
     }
 
     getRouter = () => {

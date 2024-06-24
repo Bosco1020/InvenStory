@@ -1,6 +1,7 @@
 import { expect } from "chai";
 import sinon from "sinon";
 import supertest from "supertest";
+import bcrypt from "bcrypt";
 
 import Config from "../../src/config/Config.js";
 import Database from "../../src/db/Database.js";
@@ -75,7 +76,17 @@ describe("SignUp tests", () => {
             // Assert
             expect(res.body.name).to.equal(newUser.name);
             expect(res.body.email).to.equal(newUser.email);
-            expect(res.body.password).to.equal(newUser.password);
+            expect(bcrypt.compareSync(newUser.password, res.body.password)).to.equal(true);
+        });
+
+        it("Responds with HTTP 400 if no Name", async () => {
+            // Arrange
+            const testUser = { ...newUser }
+            delete testUser.name;
+            // Act
+            const res = await request.post("/auth/SignUp").send(testUser);
+            // Assert
+            expect(res.status).to.equal(400);
         });
     });
 });
