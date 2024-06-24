@@ -88,5 +88,14 @@ describe("SignUp tests", () => {
             // Assert
             expect(res.status).to.equal(400);
         });
+
+        it("Responds with HTTP 400 if Email is invalid", async () => {
+            // Arrange
+            const testUser = { ...newUser, email: "bademail" };
+            // Act
+            const res = await request.post("/auth/SignUp").send(testUser);
+            // Assert
+            expect(res.status).to.equal(400);
+        });
     });
 });
