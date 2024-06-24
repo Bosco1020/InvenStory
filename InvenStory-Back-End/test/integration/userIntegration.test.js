@@ -97,5 +97,15 @@ describe("SignUp tests", () => {
             // Assert
             expect(res.status).to.equal(400);
         });
+
+        it("Responds with HTTP 400 if no Email", async () => {
+            // Arrange
+            const testUser = { ...newUser };
+            delete testUser.email;
+            // Act
+            const res = await request.post("/auth/SignUp").send(testUser);
+            // Assert
+            expect(res.status).to.equal(400);
+        });
     });
 });
