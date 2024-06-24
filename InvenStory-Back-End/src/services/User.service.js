@@ -11,7 +11,7 @@ export default class UserService {
         catch (e) {
             throw new Error("Invalid User");
         }
-        const result = await User.find({email: user.email}, {password: user.password});
+        const result = await User.find({name: user.name}, {email: user.email}, {password: user.password});
         return result;
     }
 
@@ -37,6 +37,7 @@ export default class UserService {
                 const token = jwt.sign({ id: user._id }, process.env.SECRET, {
                     expiresIn: 86400 });
                 return {
+                    name: user.name,
                     email: user.email,
                     password: user.password,
                     accessToken: token

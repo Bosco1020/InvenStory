@@ -15,9 +15,9 @@ export default class Routes {
     }
 
     #openRoutes = () => {
-        this.#router.post("/login", this.#userController.login)
+        this.#router.post("/auth/login", this.#userController.login)
 
-        this.#router.post("/signup", this.#userController.addUser)
+        this.#router.post("/auth/signup", this.#userController.addUser)
     }
 
     getRouter = () => {

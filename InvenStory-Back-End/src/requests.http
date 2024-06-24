@@ -1,0 +1,19 @@
+POST http://localhost:3000/auth/login
+content-type: application/json
+
+{
+    "name" : "DFUser2",
+    "email": "user2@df.com",
+    "password": "DFpassword2!"
+}
+
+###
+
+POST http://localhost:3000/auth/signup
+content-type: application/json
+
+{
+    "name" : "DFUser2",
+    "email": "user2@df.com",
+    "password": "DFpassword2!"
+}
