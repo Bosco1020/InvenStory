@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "InvenStory-Back-End",
   "main": "src/index.js",
+  "type": "module",
   "directories": {
     "test": "test",
     "start": "nodemon src/index,js"
