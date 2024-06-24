@@ -136,5 +136,14 @@ describe("SignUp tests", () => {
             // Assert
             expect(res.status).to.equal(200);
         });
+
+        it("Responds with HTTP 400 if name is incorrect", async () => {
+            // Arrange
+            const testUser = { ...Users[0], name: "notCorrect" };
+            // Act
+            const res = await request.post("/auth/Login").send(testUser);
+            // Assert
+            expect(res.status).to.equal(401);
+        });
     });
 });

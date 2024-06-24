@@ -30,7 +30,7 @@ export default class UserService {
 
     login = async (body) => {
         try {
-            const user = await User.findOne({ email: body.email });
+            const user = await User.findOne({ name: body.name, email: body.email });
             if (!user) { throw new Error("Invalid login details"); }
             
             const passwordMatches = bcrypt.compareSync(body.password, user.password);
