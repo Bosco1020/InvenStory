@@ -178,5 +178,13 @@ describe("SignUp tests", () => {
             // Assert
             expect(res.status).to.equal(200);
         });
+        
+        it("Responds with HTTP 500 if _id isn't in database", async () => {
+            // Arrange
+            // Act
+            const res = await request.get(`/auth/user/notARealId5u890438765903740`)
+            // Assert
+            expect(res.status).to.equal(500);
+        });
     });
 });
