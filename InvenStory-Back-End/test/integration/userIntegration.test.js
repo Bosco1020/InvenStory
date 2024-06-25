@@ -164,4 +164,19 @@ describe("SignUp tests", () => {
             expect(res.status).to.equal(401);
         });
     });
+
+    describe("GET '/auth/user/:_id' requests", () => {
+        let response;
+        beforeEach(async () => {
+            response = await request.post("/auth/Login").send(Users[0]);
+        });
+
+        it("Responds with HTTP 200 if successful", async () => {
+            // Arrange
+            // Act
+            const res = await request.get(`/auth/user/${response.body._id}`)
+            // Assert
+            expect(res.status).to.equal(200);
+        });
+    });
 });
