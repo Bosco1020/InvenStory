@@ -9,10 +9,10 @@ export default class UserController {
 
     getUser = async (req, res) => {
         const error = new Error("Invalid User Object");
+        const { _id } = req.params;
         try {
-            if (!req.body) throw error; //No Body = error
-            const checkLogin = await this.#service.getUser(req.body);
-            if (!checkLogin._id) throw new Error("ERROR: User not found in database");
+            const checkLogin = await this.#service.getUser(_id);
+            if (!checkLogin[0]) throw new Error("ERROR: User not found in database");
             res.status(200).json(checkLogin);
         }
         catch (e) {

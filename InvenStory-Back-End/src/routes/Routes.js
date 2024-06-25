@@ -16,6 +16,8 @@ export default class Routes {
     }
 
     #openRoutes = () => {
+        this.#router.get("/auth/user/:_id", this.#userController.getUser)
+
         this.#router.post("/auth/login", UserValidator.validateUser(), this.#userController.login)
 
         this.#router.post("/auth/signup", UserValidator.validateUser(), this.#userController.addUser)

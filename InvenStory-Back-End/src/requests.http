@@ -17,3 +17,6 @@ content-type: application/json
     "email": "user1@df.com",
     "password": "DFpassword1!"
 } 
+
+###
+GET HTTP://localhost:3000/auth/user/6679920f8c0ddca4c92684b5
