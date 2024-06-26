@@ -1,6 +1,6 @@
 {
     "allItems": [
-        {"item1" : {
+        {"item" : {
             "_id" : "",
             "name" : "Item 1",
             "description" : "Item 1 Description",
@@ -10,7 +10,7 @@
                 "Tag3"
             ]
         }},
-        {"item2" : {
+        {"item" : {
             "_id" : "",
             "name" : "Item 2",
             "description" : "Item 2 Description",
@@ -19,7 +19,7 @@
                 "Tag2"
             ]
         }},
-        {"item3" : {
+        {"item" : {
             "_id" : "",
             "name" : "Item 3",
             "description" : "Item 3 Description",
@@ -29,7 +29,7 @@
                 "Tag9"
             ]
         }},
-        {"item4" : {
+        {"item" : {
             "_id" : "",
             "name" : "Item 4",
             "description" : "Item 4 Description",

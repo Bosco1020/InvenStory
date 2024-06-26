@@ -1,10 +1,12 @@
 import React from "react";
 
-const ItemDetails = ({ details }) => {
+const ItemDetails = ({ details, tags }) => {
   return (
-    <div>
+    <div className="container">
+      <br />
       <p>{`${details.name}`}</p>
-      <p>Test</p>
+      <p>Tags: {`${tags}`}</p>
+      <p>{`${details.description}`}</p>
     </div>
   );
 };
