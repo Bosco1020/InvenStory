@@ -192,9 +192,18 @@ describe("SignUp tests", () => {
             // Act
             const res = await request.get(`/auth/user/${response.body._id}`)
             // Assert
+            expect(res.body[0]._id).to.equal(response.body._id);
             expect(res.body[0].name).to.equal(response.body.name);
             expect(res.body[0].email).to.equal(response.body.email);
             expect(bcrypt.compareSync(response.body.password, res.body[0].password)).to.equal(true);
+        });
+
+        it("Responds with HTTP 404 if no parameter passed", async () => {
+            // Arrange
+            // Act
+            const res = await request.get(`/auth/user/`)
+            // Assert
+            expect(res.status).to.equal(404);
         });
     });
 });

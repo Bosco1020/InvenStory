@@ -5,13 +5,6 @@ import bcrypt from "bcrypt";
 export default class UserService {    
 
     getUser = async (id) => {
-        // let tUser;
-        // try {
-        //     tUser = new User(user);
-        // }
-        // catch (e) {
-        //     throw new Error("Invalid User");
-        // }
         const result = await User.find({_id: id});
         return result;
     }
