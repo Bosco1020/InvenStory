@@ -6,10 +6,13 @@ import ItemBox from "./ItemBox.jsx";
 
 import dummyData from "../../data/dummyItems.json";
 
+/* <FilterItems /> */
+
 const ViewItems = () => {
+  console.log(dummyData);
   return (
     <div>
-      <FilterItems />
+      <br />
       <br />
       <ItemsTable allItems={dummyData.allItems} />
     </div>
