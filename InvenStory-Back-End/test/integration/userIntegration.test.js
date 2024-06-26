@@ -186,5 +186,15 @@ describe("SignUp tests", () => {
             // Assert
             expect(res.status).to.equal(500);
         });
+
+        it("Returns user data if successful", async () => {
+            // Arrange
+            // Act
+            const res = await request.get(`/auth/user/${response.body._id}`)
+            // Assert
+            expect(res.body[0].name).to.equal(response.body.name);
+            expect(res.body[0].email).to.equal(response.body.email);
+            expect(bcrypt.compareSync(response.body.password, res.body[0].password)).to.equal(true);
+        });
     });
 });
