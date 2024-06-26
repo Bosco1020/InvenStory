@@ -1,0 +1,39 @@
+{
+    "allItems": [
+        {"item1" : {
+            "_id" : "",
+            "name" : "Item 1",
+            "description" : "Item 1 Description",
+            "tagsList" : [
+                "Tag1",
+                "Tag2",
+                "Tag3"
+            ]
+        }},
+        {"item2" : {
+            "_id" : "",
+            "name" : "Item 2",
+            "description" : "Item 2 Description",
+            "tagsList" : [
+                "Tag1",
+                "Tag2"
+            ]
+        }},
+        {"item3" : {
+            "_id" : "",
+            "name" : "Item 3",
+            "description" : "Item 3 Description",
+            "tagsList" : [
+                "Tag3",
+                "Tag2",
+                "Tag9"
+            ]
+        }},
+        {"item4" : {
+            "_id" : "",
+            "name" : "Item 4",
+            "description" : "Item 4 Description",
+            "tagsList" : []
+        }}
+    ]
+}

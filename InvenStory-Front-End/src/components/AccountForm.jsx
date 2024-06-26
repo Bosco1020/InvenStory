@@ -13,9 +13,11 @@ import "./CSS/Form.css";
 const AccountForm = ({ changeLoggedIn, newAccount }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
 
   const [goodEmail, setGoodEmail] = useState("Valid");
   const [goodPassword, setGoodPassword] = useState("Valid");
+  const [goodUserName, setGoodUserName] = useState("Valid");
 
   let navigate = useNavigate();
 
@@ -29,6 +31,12 @@ const AccountForm = ({ changeLoggedIn, newAccount }) => {
     if (!newAccount) return;
     if (validatePassword(updatePassword)) setGoodPassword("Valid");
     else setGoodPassword("Invalid");
+  };
+
+  const updateUserNameValidation = (updateUsername) => {
+    if (!newAccount) return;
+    if (updateUsername.trim().length > 0) setGoodUserName("Valid");
+    else setGoodUserName("Invalid");
   };
 
   const handleSubmit = async (e) => {
@@ -61,11 +69,28 @@ const AccountForm = ({ changeLoggedIn, newAccount }) => {
     [];
 
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex justify-content-center text-center">
       <div className="">
         <form onSubmit={handleSubmit}>
           <label>
-            Enter your Email Address:
+            Enter your User Name <br />
+            <input
+              type="text"
+              name="nameInput"
+              className={`Input${goodUserName}`}
+              id="NameInput"
+              value={userName}
+              placeholder="YourName"
+              onChange={(e) => {
+                setUserName(e.target.value);
+                updateUserNameValidation(e.target.value);
+              }}
+            />
+          </label>
+          <br />
+          <br />
+          <label>
+            Enter your Email Address <br />
             <input
               type="text"
               name="emailInput"
@@ -87,12 +112,14 @@ const AccountForm = ({ changeLoggedIn, newAccount }) => {
               </label>
             </>
           ) : (
-            <></>
+            <>
+              <br />
+            </>
           )}
-          <br />
+
           <br />
           <label>
-            Enter your Password:
+            Enter your Password <br />
             <input
               type="password"
               name="passwordInput"
