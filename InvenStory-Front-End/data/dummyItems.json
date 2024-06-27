@@ -2,37 +2,43 @@
     "allItems": [
         {"item" : {
             "_id" : "",
-            "name" : "Item 1",
-            "description" : "Item 1 Description",
+            "name" : "Book",
+            "description" : "A weird book found in the forest",
             "tagsList" : [
-                "Tag1",
-                "Tag2",
-                "Tag3"
+                "Item",
+                "Book",
+                "Forest"
             ]
         }},
         {"item" : {
             "_id" : "",
-            "name" : "Item 2",
-            "description" : "Item 2 Description",
+            "name" : "Elder Wand",
+            "description" : "Gifted by Harry Hopper, the bun who lived",
             "tagsList" : [
-                "Tag1",
-                "Tag2"
+                "Wand",
+                "Item"
             ]
         }},
         {"item" : {
             "_id" : "",
-            "name" : "Item 3",
-            "description" : "Item 3 Description",
+            "name" : "Space Rock",
+            "description" : "One of the Finity rocks",
             "tagsList" : [
-                "Tag3",
-                "Tag2",
-                "Tag9"
+                "Finity Rock",
+                "Item",
+                "Fanos"
             ]
         }},
         {"item" : {
             "_id" : "",
-            "name" : "Item 4",
-            "description" : "Item 4 Description",
+            "name" : "Cursed",
+            "description" : "You got cursed by that one guy",
+            "tagsList" : []
+        }},
+        {"item" : {
+            "_id" : "",
+            "name" : "Buzz Movie",
+            "description" : "According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. Yellow, black. Yellow, black. Ooh, black and yellow! Let's shake it up a little.",
             "tagsList" : []
         }}
     ]
