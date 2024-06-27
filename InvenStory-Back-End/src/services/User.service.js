@@ -21,6 +21,20 @@ export default class UserService {
         return await tUser.save();
     }
 
+    updateItems = async (body) => {
+        try {
+            let tUser = User(body);
+        }
+        catch (e) {
+            throw new Error("Invalid User Details");
+         } //assignedItems
+        const result = await User.findOneAndUpdate({ name: body.name }, { assignedItems: body.assignedItems }, { new: true });
+        //const result = await User.findOne({ name: body.name, email: body.email });
+
+        //const user = await User.find({ name: body.name, email: body.email });
+        return result;
+    }
+
     login = async (body) => {
         try {
             const user = await User.findOne({ name: body.name, email: body.email });

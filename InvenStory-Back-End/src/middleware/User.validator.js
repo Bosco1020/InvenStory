@@ -11,6 +11,7 @@ export default class UserValidator {
                     .notEmpty()
                     .isString()
                     .matches(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/),
+                expressValidator.body("assignedItems").isArray().optional(),
                 UserValidator.handleValidationErrors,
             ];
         } catch (e) {

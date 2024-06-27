@@ -1,12 +1,12 @@
 import { Schema, model } from "mongoose";
 
-const userSchema = new Schema({
+const itemSchema = new Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
     assignedItems: { type: Array, required: false }
 });
 
-const User = model("User", userSchema);
+const Item = model("Item", itemSchema);
 
-export default User;
+export default Item;
