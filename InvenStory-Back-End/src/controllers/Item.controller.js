@@ -1,4 +1,4 @@
-import ItemService from "../services/Item.service";
+import ItemService from "../services/Item.service.js";
 
 export default class ItemController {
     #service;

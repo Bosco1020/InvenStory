@@ -1,4 +1,4 @@
-import Item from "../models/Item.model";
+import Item from "../models/Item.model.js";
     
 export default class ItemService {    
 
