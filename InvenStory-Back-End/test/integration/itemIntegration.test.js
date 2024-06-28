@@ -70,6 +70,30 @@ describe("Items Tests", () => {
             // Assert
             expect(res.status).to.equal(200);
         });
+
+        it("Responds with items from DB if successful", async () => {
+            // Arrange
+            // Act
+            const res = await request.get("/item/allitems");
+            // Assert
+            expect(res.body[0].name).to.equal(testItems[0].name);
+            expect(res.body[1].name).to.equal(testItems[1].name);
+            expect(res.body[2].name).to.equal(testItems[2].name);
+            expect(res.body[3].name).to.equal(testItems[3].name);
+            expect(res.body[4].name).to.equal(testItems[4].name);
+
+            expect(res.body[0].description).to.equal(testItems[0].description);
+            expect(res.body[1].description).to.equal(testItems[1].description);
+            expect(res.body[2].description).to.equal(testItems[2].description);
+            expect(res.body[3].description).to.equal(testItems[3].description);
+            expect(res.body[4].description).to.equal(testItems[4].description);
+
+            expect(res.body[0].tagList[0]).to.equal(testItems[0].tagList[0]);
+            expect(res.body[1].tagList[0]).to.equal(testItems[1].tagList[0]);
+            expect(res.body[2].tagList[0]).to.equal(testItems[2].tagList[0]);
+            expect(res.body[3].tagList[0]).to.equal(testItems[3].tagList[0]);
+            expect(res.body[4].tagList[0]).to.equal(testItems[4].tagList[0]);
+        });
     });
 });
     
