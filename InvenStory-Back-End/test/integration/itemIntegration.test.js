@@ -166,6 +166,15 @@ describe("Items Tests", () => {
             // Assert
             expect(res.status).to.equal(201);
         });
+
+        it("Responds with HTTP 400 if item isn't valid", async () => {
+            // Arrange
+            // Act
+            const res = await request.post("/item").send({item: "not an item"});
+            // Assert
+            console.log(res.body.message);
+            expect(res.status).to.equal(400);
+        });
     });
 });
     

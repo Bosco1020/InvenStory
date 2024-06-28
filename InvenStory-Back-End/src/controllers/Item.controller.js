@@ -31,7 +31,7 @@ export default class ItemController {
     };
 
     addItem = async (req, res) => {
-        const error = new Error("Invalid Item Object");
+        const error = new Error("Item validation failed");
         try {
             if (!req.body) throw error; //No Body = error
             const newItem = await this.#service.addItem(req.body);
@@ -40,8 +40,7 @@ export default class ItemController {
             res.status(201).json(newItem); //Return 201 for successfully created & object
         }
         catch (e) {
-            if (e.message == error.message) res.status(400).json({ message: e.message });
-            // ^ If message is same as Service when request is wrong
+            if (e.message.startsWith("Item validation failed")) res.status(400).json({ message: e.message });
             res.status(500).json({ message: e.message });
         }
     };

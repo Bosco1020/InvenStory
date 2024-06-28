@@ -16,7 +16,7 @@ export default class ItemService {
             tItem = new Item(newItem);
         }
         catch (e) {
-            throw new Error("Invalid Item Object");
+            throw new Error("Item validation failed");
         }
         return await tItem.save();
     }
