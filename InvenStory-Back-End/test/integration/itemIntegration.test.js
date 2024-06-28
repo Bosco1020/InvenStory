@@ -125,6 +125,14 @@ describe("Items Tests", () => {
             // Assert
             expect(res.status).to.equal(200);
         });
+
+        it("Responds with HTTP 500 if unsuccessful", async () => {
+            // Arrange
+            // Act
+            const res = await request.get(`/item/000000000`);
+            // Assert
+            expect(res.status).to.equal(500);
+        });
     });
 });
     
