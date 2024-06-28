@@ -133,6 +133,18 @@ describe("Items Tests", () => {
             // Assert
             expect(res.status).to.equal(500);
         });
+
+        it("Responds with matching item details if successful", async () => {
+            // Arrange
+            // Act
+            const res = await request.get(`/item/${id}`);
+            // Assert
+            expect(res.body[0].name).to.equal(testItems[0].name);
+            expect(res.body[0].description).to.equal(testItems[0].description);
+            expect(res.body[0].tagList[0]).to.equal(testItems[0].tagList[0]);
+            expect(res.body[0].tagList[1]).to.equal(testItems[0].tagList[1]);
+            expect(res.body[0].tagList[2]).to.equal(testItems[0].tagList[2]);
+        });
     });
 });
     
