@@ -94,6 +94,15 @@ describe("Items Tests", () => {
             expect(res.body[3].tagList[0]).to.equal(testItems[3].tagList[0]);
             expect(res.body[4].tagList[0]).to.equal(testItems[4].tagList[0]);
         });
+
+        it("Responds with HTTP 500 if unsuccessful", async () => {
+            // Arrange
+            await Item.deleteMany();
+            // Act
+            const res = await request.get("/item/allitems");
+            // Assert
+            expect(res.status).to.equal(500);
+        });
     });
 });
     
