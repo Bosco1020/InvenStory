@@ -104,5 +104,27 @@ describe("Items Tests", () => {
             expect(res.status).to.equal(500);
         });
     });
+    describe("GET '/item/:id' requests", () => {
+
+        let all;
+        let id;
+        beforeEach(async () => {
+            all = await request.get("/item/allitems");
+            id = all.body[0]._id;
+        });
+
+        afterEach(() => {
+            all = undefined;
+            id = undefined;
+        });
+
+        it("Responds with HTTP 200 if successful", async () => {
+            // Arrange
+            // Act
+            const res = await request.get(`/item/${id}`);
+            // Assert
+            expect(res.status).to.equal(200);
+        });
+    });
 });
     
