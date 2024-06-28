@@ -175,6 +175,18 @@ describe("Items Tests", () => {
             console.log(res.body.message);
             expect(res.status).to.equal(400);
         });
+
+        it("Responds with saved item is successful", async () => {
+            // Arrange
+            // Act
+            const res = await request.post("/item").send(newItem);
+            // Assert
+            expect(res.body.name).to.equal(newItem.name);
+            expect(res.body.description).to.equal(newItem.description);
+            expect(res.body.tagList[0]).to.equal(newItem.tagList[0]);
+            expect(res.body.tagList[1]).to.equal(newItem.tagList[1]);
+            expect(res.body._id).to.not.equal(undefined);
+        });
     });
 });
     

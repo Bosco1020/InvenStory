@@ -31,9 +31,7 @@ export default class ItemController {
     };
 
     addItem = async (req, res) => {
-        const error = new Error("Item validation failed");
         try {
-            if (!req.body) throw error; //No Body = error
             const newItem = await this.#service.addItem(req.body);
             //if (!newItem._id) { res.status(403).json({ message: "Item already in Database" }); return; }
             if (!newItem) throw new Error("ERROR: Favourite not created in database");
