@@ -28,6 +28,8 @@ export default class Routes {
         this.#router.post("/auth/signup", UserValidator.validateUser(), this.#userController.addUser)
 
         this.#router.get("/item/allitems", this.#itemController.getItems)
+
+        this.#router.get("/item/:id", this.#itemController.getItemID)
     }
 
     getRouter = () => {
