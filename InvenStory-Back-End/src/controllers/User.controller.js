@@ -20,14 +20,15 @@ export default class UserController {
         }
     };
 
-    updateItems = async (req, res) => {
+    updateUserItems = async (req, res) => {
         const error = new Error("Invalid User Object");
         try {
             if (!req.body) throw error; //No Body = error
             const updated = await this.#service.updateItems(req.body);
+            //const updated = await this.#service.findItem();
 
-            //if (!updated) throw new Error("ERROR: User not found in database");
-            res.status(204).json(updated);
+            //if (!updated._id) throw new Error("ERROR: User not found in database");
+            res.status(200).json(updated);
         }
         catch (e) {
             res.status(500).json({ message: e.message });

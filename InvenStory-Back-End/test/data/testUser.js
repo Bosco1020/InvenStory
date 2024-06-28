@@ -11,6 +11,7 @@ const getTestUser = async () => {
                 "name": "Sammy",
                 "email": "SammE@example.com",
                 "password": await hashPassword("SamPass22!"),
+                "role": 1,
                 "__v": 0
             },
 
@@ -18,6 +19,7 @@ const getTestUser = async () => {
                 "name": "Jules",
                 "email": "JulYee@exp.co.uk",
                 "password": await hashPassword("Jul@Yee33"),
+                "role": 2,
                 "__v": 0
             }
         ],
@@ -25,19 +27,22 @@ const getTestUser = async () => {
             {
                 "name": "Sammy",
                 "email": "SammE@example.com",
-                "password": "SamPass22!"
+                "password": "SamPass22!",
+                "role": 1
             },
 
             {
                 "name": "Jules",
                 "email": "JulYee@exp.co.uk",
-                "password": "Jul@Yee33"
+                "password": "Jul@Yee33",
+                "role": 2
             }
         ],
         newUser: {
             "name": "Siobahn",
             "email": "Siobahn@emails.com",
             "password": "Hans!Sion42",
+            "role": 1
         }
     }
 }

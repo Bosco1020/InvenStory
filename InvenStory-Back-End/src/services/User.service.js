@@ -5,6 +5,7 @@ import bcrypt from "bcrypt";
 export default class UserService {    
 
     getUser = async (id) => {
+        //const result = await User.find({_id: id});
         const result = await User.find({_id: id});
         return result;
     }
@@ -27,11 +28,8 @@ export default class UserService {
         }
         catch (e) {
             throw new Error("Invalid User Details");
-         } //assignedItems
-        const result = await User.findOneAndUpdate({ name: body.name }, { assignedItems: body.assignedItems }, { new: true });
-        //const result = await User.findOne({ name: body.name, email: body.email });
-
-        //const user = await User.find({ name: body.name, email: body.email });
+        }
+        const result = await User.findOneAndUpdate({ name: body.name }, { assignedItems: body.assignedItems }, { upsert: true, returnOriginal: false, returnNewDocument: true });
         return result;
     }
 

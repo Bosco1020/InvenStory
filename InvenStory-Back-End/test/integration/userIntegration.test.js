@@ -16,7 +16,7 @@ const { dbUsers, Users, newUser } = await getTestUser();
 
 
 
-describe.skip("SignUp tests", () => {
+describe("SignUp tests", () => {
     let userServer;
     let userService;
     let database;
@@ -207,21 +207,24 @@ describe.skip("SignUp tests", () => {
         });
     });
 
-    describe("PUT '/auth/update' requests", () => {
-        it("Responds with HTTP 204 if successful", async () => {
+    describe("PUT '/auth/updateUserItems' requests", () => {
+        it("Responds with HTTP 200 if successful", async () => {
             // Arrange
             const testUser = { ...Users[0], assignedItems: [{ name: "Item1" }, { name: "Item2" }] };
-            // //const testUser = { ...Users[0], email: "email2@num.vom", assignedItems: [{name:"Item1"},{name:"Item2"}] };
-            // console.log(testUser);
-            // // Act
-            const res = await request.put(`/auth/updateItems`).send(testUser);
-            // // Assert
-            console.log(res.body);
-            console.log(res.body[0]);
-            
+            // Act
+            const res = await request.put(`/auth/updateUserItems`).send(testUser);
             // Assert
-            expect(res.status).to.equal(204);
-            //expect(res.status).to.equal(201);
+            expect(res.status).to.equal(200);
+        });
+
+        it("Responds with updated User data if successful", async () => {
+            // Arrange
+            const testUser = { ...Users[0], assignedItems: [{ name: "Item1" }, { name: "Item2" }] };
+            // Act
+            const res = await request.put(`/auth/updateUserItems`).send(testUser);
+            // Assert
+            expect(res.body.assignedItems[0].name).to.equal("Item1");
+            expect(res.body.assignedItems[1].name).to.equal("Item2");
         });
     });
 });
