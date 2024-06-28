@@ -146,5 +146,26 @@ describe("Items Tests", () => {
             expect(res.body[0].tagList[2]).to.equal(testItems[0].tagList[2]);
         });
     });
+
+    describe("POST '/item' requests", () => {
+        let newItem;
+        beforeEach(async () => {
+            newItem = {
+                "name": "New Item",
+                "description": "A new item for testing",
+                "tagList": [
+                    "Item",
+                    "Test"
+                ]
+            };
+        });
+        it("Responds with HTTP 201 if successful", async () => {
+            // Arrange
+            // Act
+            const res = await request.post("/item").send(newItem);
+            // Assert
+            expect(res.status).to.equal(201);
+        });
+    });
 });
     

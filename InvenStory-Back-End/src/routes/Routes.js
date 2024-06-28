@@ -30,6 +30,8 @@ export default class Routes {
         this.#router.get("/item/allitems", this.#itemController.getItems)
 
         this.#router.get("/item/:id", this.#itemController.getItemID)
+
+        this.#router.post("/item", this.#itemController.addItem)
     }
 
     getRouter = () => {

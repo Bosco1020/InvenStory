@@ -29,4 +29,20 @@ export default class ItemController {
             res.status(500).json({ message: e.message });
         }
     };
+
+    addItem = async (req, res) => {
+        const error = new Error("Invalid Item Object");
+        try {
+            if (!req.body) throw error; //No Body = error
+            const newItem = await this.#service.addItem(req.body);
+            //if (!newItem._id) { res.status(403).json({ message: "Item already in Database" }); return; }
+            if (!newItem) throw new Error("ERROR: Favourite not created in database");
+            res.status(201).json(newItem); //Return 201 for successfully created & object
+        }
+        catch (e) {
+            if (e.message == error.message) res.status(400).json({ message: e.message });
+            // ^ If message is same as Service when request is wrong
+            res.status(500).json({ message: e.message });
+        }
+    };
 }
