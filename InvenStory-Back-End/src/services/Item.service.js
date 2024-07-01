@@ -14,7 +14,8 @@ export default class ItemService {
         let items = [];
 
         for (let i = 0; i < user.assignedItems.length; i++){
-            items[i] = await Item.find({ name: user.assignedItems[i] });
+            const temp = await Item.find({ name: user.assignedItems[i] });
+            items[i] = temp[0];
         }
 
         return items;

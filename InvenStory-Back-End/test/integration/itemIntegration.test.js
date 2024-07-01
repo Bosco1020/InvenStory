@@ -204,6 +204,18 @@ describe("Items Tests", () => {
             // Assert
             expect(res.status).to.equal(200);
         });
+
+        it("Returns array of items if successful", async () => {
+            // Arrange
+            // Act
+            const res = await request.get("/item/useritems").send(tempUser);
+            // Assert
+            console.log(res.body);
+            expect(res.body[0].name).to.equal("Book");
+            expect(res.body[0].description).to.equal("A weird book found in the forest");
+            expect(res.body[1].name).to.equal("Elder Wand");
+            expect(res.body[1].description).to.equal("Gifted by Harry Hopper, the bun who lived");
+        });
     })
 });
     
