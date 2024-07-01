@@ -1,0 +1,11 @@
+.filter-box {
+    background-color: #3c8ade;
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.filter-spacer {
+    margin-left: 3px;
+    margin-right: 3px;
+}

@@ -45,10 +45,10 @@ const AccountForm = ({ changeLoggedIn, newAccount }) => {
 
     let response;
     if (!newAccount) {
-      response = await login(email, password);
+      response = await login(userName, email, password);
       if (localStorage.getItem("user")) changeLoggedIn(true); //? May not need
     } else {
-      response = await signUp(email, password);
+      response = await signUp(userName, email, password);
       if (response._id) navigate(`/Login`);
     }
 

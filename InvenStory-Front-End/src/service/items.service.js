@@ -1,4 +1,5 @@
 import axios from "axios";
+import authToken from "../utils/auth-token.js";
 
 import dummyData from "../../data/dummyItems.json";
 
@@ -8,9 +9,9 @@ const URL = "http://localhost:3000/item";
 
 export const getItemsData = async () => {
     try {
-        const res = await axios.get(`${URL}/allitems`);
+        const res = await axios.get(`${URL}/allitems`, { headers: authToken() });
 
-        return res;
+        return res.data;
         //return dummyData.allItems;
 
         //get("/auth/user/:_id", this.#userController.getUser)
