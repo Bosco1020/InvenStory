@@ -216,6 +216,15 @@ describe("Items Tests", () => {
             expect(res.body[1].name).to.equal("Elder Wand");
             expect(res.body[1].description).to.equal("Gifted by Harry Hopper, the bun who lived");
         });
+
+        it("Responds with HTTP 400 if invalid user object sent", async () => {
+            // Arrange
+            const testUser = { name: "Not a user" };
+            // Act
+            const res = await request.get("/item/useritems").send(testUser);
+            // Assert
+            expect(res.status).to.equal(400);
+        });
     })
 });
     

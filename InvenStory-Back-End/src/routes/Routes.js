@@ -21,7 +21,7 @@ export default class Routes {
     #openRoutes = () => {
         this.#router.get("/auth/user/:_id", this.#userController.getUser)
 
-        this.#router.get("/item/useritems", this.#itemController.getUserItems) //! Maybe user user validator?!
+        this.#router.get("/item/useritems", UserValidator.validateUser(), this.#itemController.getUserItems) //! Maybe user user validator?!
 
         this.#router.post("/auth/login", UserValidator.validateUser(), this.#userController.login)
 
