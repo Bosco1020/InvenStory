@@ -6,7 +6,7 @@ import Header from "./components/Header.jsx";
 import Login from "./components/Login.jsx";
 import SignUp from "./components/SignUp.jsx";
 
-import Test from "./components/Test.jsx"; // Development only
+import Test from "./components/Test.jsx"; //! Development only
 import ViewItems from "./components/ViewItems.jsx";
 
 import "../src/components/CSS/App.css";
