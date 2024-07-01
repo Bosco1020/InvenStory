@@ -5,10 +5,14 @@ import { useEffect } from "react";
 import "./CSS/Header.css";
 
 const Header = ({ loggedIn, updatedLoggedIn }) => {
+  const logout = () => {
+    updatedLoggedIn(false);
+  };
+
   useEffect(() => {
-    if (localStorage.getItem("user")) {
-      updatedLoggedIn(true);
-    } else updatedLoggedIn(false);
+    // if (localStorage.getItem("user")) {
+    //   updatedLoggedIn(true);
+    // } else updatedLoggedIn(false);
   }),
     [];
 
@@ -49,7 +53,17 @@ const Header = ({ loggedIn, updatedLoggedIn }) => {
                       </a>
                     </li>
                   ) : (
-                    <></>
+                    <>
+                      <li className="nav-item">
+                        <button
+                          type="button"
+                          className="btn"
+                          onClick={(e) => logout()}
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    </>
                   )}
                 </ul>
               </div>

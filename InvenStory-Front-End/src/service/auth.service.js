@@ -1,7 +1,6 @@
 import axios from "axios";
 
-//const URL = import.meta.env.VITE_APP_USER_URL;
-const URL = "http://localhost:3000/auth";
+const URL = import.meta.env.VITE_APP_USER_URL;
 
 export const login = async (name, email, password) => {
     try {
