@@ -1,7 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import { getItemsData } from "../service/items.service.js";
+import { filterByTag } from "../utils/item-filter.js";
 import FilterItems from "./FilterItems.jsx";
 import ItemsTable from "./ItemsTable.jsx";
 
@@ -9,26 +11,40 @@ import ItemsTable from "./ItemsTable.jsx";
 
 const ViewItems = () => {
   const [loading, setLoading] = useState(true);
-  const [filters, setFilters] = useState({ name: "", tag: "" });
   const [allItems, setAllItems] = useState([]);
+  const [shownItems, setShownItems] = useState([]);
 
-  const filterItems = () => {
-    // Apply filter to items shown
-  };
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const getItems = async () => {
       const res = await getItemsData();
       console.log(res);
       setAllItems(res);
+
+      // Check if filters applied
+      if (
+        searchParams.get("nameFilter") == "" &&
+        searchParams.get("tagFilter") == ""
+      )
+        setShownItems(res);
+      else {
+        const filtered = filterByTag(
+          {
+            name: searchParams.get("nameFilter"),
+            tag: searchParams.get("tagFilter"),
+          },
+          res
+        );
+        setShownItems(filtered);
+        console.log("Filter Results:");
+        console.log(filtered);
+      }
+
       setLoading(false);
     };
 
-    if (!loading) return;
-    getItems();
-    // Check if filters applied
-    if (filters.name == "" || filters.tag == "") return;
-    filterItems();
+    if (loading) getItems();
   }),
     [];
 
@@ -41,9 +57,9 @@ const ViewItems = () => {
       ) : (
         <>
           <br />
-          <FilterItems Filters={setFilters} />
+          <FilterItems />
           <br />
-          <ItemsTable allItems={allItems} />
+          <ItemsTable allItems={shownItems} />
         </>
       )}
     </div>

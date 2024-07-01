@@ -44,8 +44,14 @@ const App = () => {
       <br />
       <Routes>
         <Route path="/" element={<ViewItems />} />
-        <Route path="/SignUp" element={<SignUp setLoggedIn={logOut} />} />
-        <Route path="/Login" element={<Login setLoggedIn={logOut} />} />
+        <Route
+          path="/SignUp"
+          element={<SignUp setLoggedIn={setLogIn} logout={logOut} />}
+        />
+        <Route
+          path="/Login"
+          element={<Login setLoggedIn={setLogIn} logout={logOut} />}
+        />
       </Routes>
       <Footer />
     </div>
