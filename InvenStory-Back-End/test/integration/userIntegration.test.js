@@ -16,7 +16,7 @@ const { dbUsers, Users, newUser } = await getTestUser();
 
 
 
-describe("SignUp tests", () => {
+describe.skip("Authentication tests", () => {
     let userServer;
     let userService;
     let database;

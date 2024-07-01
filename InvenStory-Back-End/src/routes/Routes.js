@@ -21,6 +21,8 @@ export default class Routes {
     #openRoutes = () => {
         this.#router.get("/auth/user/:_id", this.#userController.getUser)
 
+        this.#router.get("/item/useritems", this.#itemController.getUserItems) //! Maybe user user validator?!
+
         this.#router.post("/auth/login", UserValidator.validateUser(), this.#userController.login)
 
         this.#router.put("/auth/updateUserItems", UserValidator.validateUser(), this.#userController.updateUserItems)
@@ -31,7 +33,7 @@ export default class Routes {
 
         this.#router.get("/item/:id", this.#itemController.getItemID)
 
-        this.#router.post("/item", this.#itemController.addItem)
+        this.#router.post("/item", this.#itemController.addItem) //! Check with item validator
     }
 
     getRouter = () => {

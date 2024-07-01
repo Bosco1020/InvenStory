@@ -10,6 +10,22 @@ export default class ItemService {
         return await Item.find({_id: id});
     }
 
+    getUserItems = async (user) => {
+        let items = [];
+
+        for (let i = 0; i < user.assignedItems.length; i++){
+            items[i] = await Item.find({ name: user.assignedItems[i] });
+        }
+
+        return items;
+
+        // return await Item.find({ name: user.assignedItems })
+        
+//         const cursor = db.collection('inventory').find({
+//   tags: { $all: ['red', 'blank'] }
+// });
+    }
+
     addItem = async (newItem) => {
         let tItem;
         try {

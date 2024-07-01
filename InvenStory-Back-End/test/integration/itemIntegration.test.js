@@ -18,7 +18,7 @@ const { testItems, dbItems } = await getTestItems();
 
 
 
-describe.skip("Items Tests", () => {
+describe("Items Tests", () => {
     let itemServer;
     let itemService;
     let database;
@@ -188,5 +188,22 @@ describe.skip("Items Tests", () => {
             expect(res.body._id).to.not.equal(undefined);
         });
     });
+    describe("GET '/item/useritems'", async () => {
+        let tempUser = {
+                "name": "Sammy",
+                "email": "SammE@example.com",
+                "password": "SamPass22!",
+                "role": 1,
+            "assignedItems": ["Book", "Elder Wand"]
+        }
+
+        it("Responds with HTTP 200 if successful", async () => {
+            // Arrange
+            // Act
+            const res = await request.get("/item/useritems").send(tempUser);
+            // Assert
+            expect(res.status).to.equal(200);
+        });
+    })
 });
     

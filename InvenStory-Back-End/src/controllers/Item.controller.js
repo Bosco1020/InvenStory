@@ -22,7 +22,18 @@ export default class ItemController {
         const { id } = req.params;
         try {
             const result = await this.#service.getItem(id);
-            if (!result) throw new Error("ERROR: Item not found in database");
+            //if (!result) throw new Error("ERROR: User Items not found in database");
+            res.status(200).json(result);
+        }
+        catch (e) {
+            res.status(500).json({ message: e.message });
+        }
+    };
+
+    getUserItems = async (req, res) => {
+        try {
+            const result = await this.#service.getUserItems(req.body);
+            if (!result[0]) throw new Error("ERROR: Items not found in database");
             res.status(200).json(result);
         }
         catch (e) {
