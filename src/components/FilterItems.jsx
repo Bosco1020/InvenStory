@@ -1,16 +1,21 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import "./CSS/FilterBox.css";
 
-const FilterItems = ({ Filters }) => {
+const FilterItems = () => {
   const [filterOpen, setFilterOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
   const [nameFilter, setNameFilter] = useState("");
   const [tagFilter, setTagFilter] = useState("");
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const handleFilter = () => {
-    Filters({ name: nameFilter, tag: tagFilter });
-    //window.location.href = "/"; // Reload view page after setting filters
+    // Filters([nameFilter, tagFilter]);
+    // Filters({ name: nameFilter, tag: tagFilter });
   };
 
   const closeFilter = async (e) => {
@@ -26,8 +31,44 @@ const FilterItems = ({ Filters }) => {
   const clearFilter = () => {
     setNameFilter("");
     setTagFilter("");
-    Filters({ name: "", tag: "" });
   };
+
+  useEffect(() => {
+    // console.log(searchParams.get("nameFilter"));
+    // console.log(searchParams.get("tagFilter"));
+    if (!loading) return;
+
+    if (
+      searchParams.get("nameFilter") != "" ||
+      searchParams.get("tagFilter") != ""
+    ) {
+      setNameFilter(searchParams.get("nameFilter"));
+      setTagFilter(searchParams.get("tagFilter"));
+    }
+
+    // const applyFilter = async () => {
+    //   if (
+    //     searchParams.get("nameFilter") != "" ||
+    //     searchParams.get("tagFilter") != ""
+    //   ) {
+    //     setName(searchParams.get("nameFilter"));
+    //     setTag(searchParams.get("tagFilter"));
+    //     // const data = { name: name, tag: tag };
+    //     // Filters(data);
+    //     console.log("FILTERS: " + name + ", " + tag);
+    //     // console.log(Filters);
+    //     //window.location.href = "/weather/" + search;
+    //   }
+
+    //const resp = await getCityWeather(id);
+
+    // Check if city, if not go to home
+    // if (resp == null) {
+    //   window.location.href = "/?search=fail";
+    // }
+    setLoading(false);
+  }),
+    [];
 
   return (
     <div>
