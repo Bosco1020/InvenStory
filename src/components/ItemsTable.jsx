@@ -7,14 +7,15 @@ const ItemsTable = ({ allItems }) => {
   // Show n boxes
   const itemRows = allItems.map((currentItem) => {
     const item = new ItemModel(
-      currentItem.item._id,
-      currentItem.item.name,
-      currentItem.item.description,
-      currentItem.item.tagsList
+      currentItem._id,
+      currentItem.name,
+      currentItem.description,
+      currentItem.tagList
     );
     let allTags = "";
-    for (let i = 0; i < item.tagsList.length; i++) {
-      allTags += item.tagsList[i] + ", ";
+    // allTags = item.tagsList; Object.keys(data.shareInfo[i]).length
+    for (let i = 0; i < currentItem.tagList.length; i++) {
+      allTags += currentItem.tagList[i] + ", ";
     }
 
     return (
