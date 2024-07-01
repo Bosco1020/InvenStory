@@ -4,9 +4,9 @@ import { useEffect } from "react";
 
 import "./CSS/Header.css";
 
-const Header = ({ loggedIn, updatedLoggedIn }) => {
+const Header = ({ loggedIn, updateLogout }) => {
   const logout = () => {
-    updatedLoggedIn(false);
+    updateLogout(true);
   };
 
   useEffect(() => {
@@ -41,11 +41,6 @@ const Header = ({ loggedIn, updatedLoggedIn }) => {
 
               <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
-                  <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="/">
-                      Home
-                    </a>
-                  </li>
                   {!loggedIn ? (
                     <li className="nav-item">
                       <a className="nav-link" href="/Login">

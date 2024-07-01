@@ -15,25 +15,23 @@ import ViewItems from "./components/ViewItems.jsx";
 import "../src/components/CSS/App.css";
 
 const App = () => {
-  const [loggedIn, setLogIn] = useState(false);
-  const [changeLog, setChangeLog] = useState(false);
+  const [loggedIn, setLogIn] = useState(Boolean);
+  const [loggedOut, logOut] = useState(false);
 
   let navigate = useNavigate();
 
-  // const changeLoggedIn = async (newState) => {
-  //   changeLog = newState;
-  // };
-
   useEffect(() => {
-    console.log(changeLog + " " + loggedIn);
-    if (loggedIn == changeLog) return;
+    if (localStorage.getItem("user")) setLogIn(true);
+    console.log(loggedOut + " " + loggedIn);
+    if (loggedIn == !loggedOut) return;
 
     const updateLoggedIn = async () => {
-      setChangeLog(loggedIn);
-      if (loggedIn == true) navigate(`/`);
-      else {
+      if (loggedOut) {
+        setLogIn(false);
         logout();
         navigate(`/Login`);
+      } else if (loggedIn) {
+        navigate(`/`);
       }
     };
     updateLoggedIn();
@@ -42,12 +40,12 @@ const App = () => {
 
   return (
     <div className="container-fluid background-image">
-      <Header loggedIn={loggedIn} updatedLoggedIn={setLogIn} />
+      <Header loggedIn={loggedIn} updateLogout={logOut} />
       <br />
       <Routes>
         <Route path="/" element={<ViewItems />} />
-        <Route path="/SignUp" element={<SignUp setLoggedIn={setLogIn} />} />
-        <Route path="/Login" element={<Login setLoggedIn={setLogIn} />} />
+        <Route path="/SignUp" element={<SignUp setLoggedIn={logOut} />} />
+        <Route path="/Login" element={<Login setLoggedIn={logOut} />} />
       </Routes>
       <Footer />
     </div>

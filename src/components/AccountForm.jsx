@@ -46,7 +46,7 @@ const AccountForm = ({ changeLoggedIn, newAccount }) => {
     let response;
     if (!newAccount) {
       response = await login(userName, email, password);
-      if (localStorage.getItem("user")) changeLoggedIn(true); //? May not need
+      if (localStorage.getItem("user")) changeLoggedIn(false); //? May not need
     } else {
       response = await signUp(userName, email, password);
       if (response._id) navigate(`/Login`);
@@ -57,6 +57,7 @@ const AccountForm = ({ changeLoggedIn, newAccount }) => {
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
+      //changeLoggedIn(false);
       navigate(`/`);
     }
     /* //? Check if need, should be ok without
