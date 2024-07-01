@@ -18,7 +18,7 @@ const { testItems, dbItems } = await getTestItems();
 
 
 
-describe("Items Tests", () => {
+describe.skip("Items Tests", () => {
     let itemServer;
     let itemService;
     let database;

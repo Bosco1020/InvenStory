@@ -226,5 +226,14 @@ describe("SignUp tests", () => {
             expect(res.body.assignedItems[0].name).to.equal("Item1");
             expect(res.body.assignedItems[1].name).to.equal("Item2");
         });
+
+        it("Responds with HTTP 400 if update isn't a valid user object", async () => {
+            // Arrange
+            const testUser = { name: "Not a User" };
+            // Act
+            const res = await request.put(`/auth/updateUserItems`).send(testUser);
+            // Assert
+            expect(res.status).to.equal(400);
+        });
     });
 });
