@@ -57,8 +57,7 @@ const AccountForm = ({ changeLoggedIn, newAccount }) => {
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
-      changeLoggedIn(true);
-      navigate(`/`); // redirect if already logged in
+      navigate(`/`);
     }
     /* //? Check if need, should be ok without
     if (localStorage.getItem("user")) {
