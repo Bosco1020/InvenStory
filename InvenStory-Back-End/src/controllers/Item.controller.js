@@ -46,7 +46,7 @@ export default class ItemController {
             if (!req.body) throw new Error("ERROR: Empty Request");
             const newItem = await this.#service.addItem(req.body);
             //if (!newItem._id) { res.status(403).json({ message: "Item already in Database" }); return; }
-            if (!newItem) throw new Error("ERROR: Favourite not created in database");
+            if (!newItem) throw new Error("ERROR: Item not created in database");
             res.status(201).json(newItem); //Return 201 for successfully created & object
         }
         catch (e) {
@@ -54,4 +54,17 @@ export default class ItemController {
             res.status(500).json({ message: e.message });
         }
     };
+
+    updateItem = async (req, res) => {
+        try {
+            if (!req.body) throw new Error("ERROR: Empty Request");
+            const newItem = await this.#service.updateItem(req.body);
+            if (!newItem) throw new Error("ERROR: Item not updated in database");
+            res.status(200).json(newItem);
+        }
+        catch (e) {
+            if (e.message.startsWith("Item validation failed")) res.status(400).json({ message: e.message });
+            res.status(500).json({ message: e.message });
+        }
+    }
 }

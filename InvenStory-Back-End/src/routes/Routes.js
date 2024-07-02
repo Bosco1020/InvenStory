@@ -35,6 +35,8 @@ export default class Routes {
 
         this.#router.get("/item/:id", this.#itemController.getItemID)
 
+        this.#router.put("/item", this.#itemController.updateItem)
+
         this.#router.post("/item", this.#itemController.addItem) //! Check with item validator
     }
 

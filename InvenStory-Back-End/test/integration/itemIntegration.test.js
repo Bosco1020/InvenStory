@@ -188,19 +188,19 @@ describe("Items Tests", () => {
             expect(res.body._id).to.not.equal(undefined);
         });
     });
-    describe("GET '/item/useritems'", async () => {
+    describe("POST '/item/useritems'", async () => {
         let tempUser = {
-                "name": "Sammy",
-                "email": "SammE@example.com",
-                "password": "SamPass22!",
-                "role": 1,
+            "name": "Sammy",
+            "email": "SammE@example.com",
+            "password": "SamPassword22!",
+            "role": 1,
             "assignedItems": ["Book", "Elder Wand"]
         }
 
         it("Responds with HTTP 200 if successful", async () => {
             // Arrange
             // Act
-            const res = await request.get("/item/useritems").send(tempUser);
+            const res = await request.post("/item/useritems").send(tempUser);
             // Assert
             expect(res.status).to.equal(200);
         });
@@ -208,7 +208,7 @@ describe("Items Tests", () => {
         it("Returns array of items if successful", async () => {
             // Arrange
             // Act
-            const res = await request.get("/item/useritems").send(tempUser);
+            const res = await request.post("/item/useritems").send(tempUser);
             // Assert
             console.log(res.body);
             expect(res.body[0].name).to.equal("Book");
@@ -221,10 +221,27 @@ describe("Items Tests", () => {
             // Arrange
             const testUser = { name: "Not a user" };
             // Act
-            const res = await request.get("/item/useritems").send(testUser);
+            const res = await request.post("/item/useritems").send(testUser);
             // Assert
             expect(res.status).to.equal(400);
         });
-    })
+    });
+
+    describe("PUT '/item'", async () => {
+        let changedItem4;
+
+        before(() => {
+            changedItem4 = { ...testItems[4], tagList: ["Item"]};
+        })
+
+        it("Responds with HTTP 200 if successful", async () => {
+            // Arrange
+            // Act
+            const res = await request.put("/item").send(changedItem4);
+            // Assert
+            expect(res.status).to.equal(200);
+        });
+
+    });
 });
     

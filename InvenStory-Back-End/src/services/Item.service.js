@@ -37,4 +37,20 @@ export default class ItemService {
         }
         return await tItem.save();
     }
+
+    updateItem = async (newItem) => {
+        let tItem;
+        try {
+            tItem = new Item(newItem);
+        }
+        catch (e) {
+            throw new Error("Item validation failed");
+        }
+        return await Item.findOneAndUpdate({ name: tItem.name },
+            {
+                $set: {
+                    'name': tItem.name, 'description': tItem.description, 'tagList' : tItem.tagList
+                }
+            }, {new: true});
+    }
 }
