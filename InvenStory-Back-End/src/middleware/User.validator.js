@@ -11,6 +11,10 @@ export default class UserValidator {
                     .notEmpty()
                     .isString()
                     .matches(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/),
+                expressValidator
+                    .body("role")
+                    .isInt()
+                    .optional(),
                 expressValidator.body("assignedItems").isArray().optional(),
                 UserValidator.handleValidationErrors,
             ];

@@ -48,6 +48,8 @@ export default class UserService {
                     name: user.name,
                     email: user.email,
                     password: body.password,
+                    assignedItems: user.assignedItems,
+                    role: user.role,
                     accessToken: token
                 };           
             } else { throw new Error("Invalid login details");  }

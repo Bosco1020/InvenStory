@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 
 export default class Server {
@@ -23,6 +24,7 @@ export default class Server {
             console.log(`Server is live & listening on http://${this.#host}:${this.#port}`);
         });
         // set router used
+        this.#app.use(cors());
         this.#app.use(express.json());
         this.#app.use((req, res, next) => {
             res.header(

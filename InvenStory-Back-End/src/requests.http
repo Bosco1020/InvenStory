@@ -13,10 +13,22 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-    "name" : "DFUser1",
-    "email": "user1@df.com",
-    "password": "DFpassword1!"
+    "name" : "DFUser2",
+    "email": "user2@df.com",
+    "password": "DFpassword2!",
+    "role": "1",
+    "assignedItems": ["Cloak of Billowing", "Rope", "Steve"]
 } 
 
 ###
 GET HTTP://localhost:3000/auth/user/6679920f8c0ddca4c92684b5
+
+###
+POST HTTP://localhost:3000/item
+content-type: application/json
+
+{
+    "name" : "Rope",
+    "description": "137 ft of Rope",
+    "tagList": ["Item", "Adventurer Supplies"]
+} 
