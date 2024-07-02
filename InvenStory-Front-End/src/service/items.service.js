@@ -20,8 +20,6 @@ export const getUsersItemsData = async (user) => {
         const User = JSON.parse(localStorage.getItem(`user`));
         delete User['accessToken'];
         delete User['_id'];
-        console.log(User);
-        const user = { name: User.name, email: User.email, password: User.password, role: User.role };
         const res = await axios.post(`${ITEM_URL}/useritems`, User, {headers: authToken() });
         return res.data;
     }
