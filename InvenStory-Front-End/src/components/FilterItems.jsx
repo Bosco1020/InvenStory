@@ -31,6 +31,7 @@ const FilterItems = () => {
   const clearFilter = () => {
     setNameFilter("");
     setTagFilter("");
+    window.location.href = "/";
   };
 
   useEffect(() => {
@@ -106,7 +107,7 @@ const FilterItems = () => {
                   />
                 </label>
                 <button type="submit" className="btn btn-primary filter-spacer">
-                  FIlter
+                  Filter
                 </button>
               </form>
               <button

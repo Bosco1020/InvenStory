@@ -10,7 +10,7 @@ import {
 
 import "./CSS/Form.css";
 
-const AccountForm = ({ changeLoggedIn, newAccount, setLogout }) => {
+const AccountForm = ({ changeLoggedIn, newAccount, setLogout, user }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
@@ -47,6 +47,7 @@ const AccountForm = ({ changeLoggedIn, newAccount, setLogout }) => {
     if (!newAccount) {
       response = await login(userName, email, password);
       if (localStorage.getItem("user")) {
+        user(response);
         changeLoggedIn(true);
         setLogout(false);
       }
@@ -54,7 +55,6 @@ const AccountForm = ({ changeLoggedIn, newAccount, setLogout }) => {
       response = await signUp(userName, email, password);
       if (response._id) navigate(`/Login`);
     }
-
     console.log(response);
   };
 

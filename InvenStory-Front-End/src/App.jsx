@@ -17,6 +17,7 @@ import "../src/components/CSS/App.css";
 const App = () => {
   const [loggedIn, setLogIn] = useState(Boolean);
   const [loggedOut, logOut] = useState(false);
+  const [User, setUser] = useState({});
 
   let navigate = useNavigate();
 
@@ -46,11 +47,23 @@ const App = () => {
         <Route path="/" element={<ViewItems />} />
         <Route
           path="/SignUp"
-          element={<SignUp setLoggedIn={setLogIn} logout={logOut} />}
+          element={
+            <SignUp
+              setLoggedIn={setLogIn}
+              logout={logOut}
+              updateUser={setUser}
+            />
+          }
         />
         <Route
           path="/Login"
-          element={<Login setLoggedIn={setLogIn} logout={logOut} />}
+          element={
+            <Login
+              setLoggedIn={setLogIn}
+              logout={logOut}
+              updateUser={setUser}
+            />
+          }
         />
       </Routes>
       <Footer />
