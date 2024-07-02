@@ -14,10 +14,13 @@ import ItemsTable from "./ItemsTable.jsx";
 
 const ViewItems = () => {
   const [loading, setLoading] = useState(true);
+  const [admin, setAdmin] = useState(false);
   const [allItems, setAllItems] = useState([]);
   const [shownItems, setShownItems] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const user = JSON.parse(localStorage.getItem(`user`));
 
   //? DO need check incase open / while not logged in? Sorted in App?
 
@@ -25,10 +28,13 @@ const ViewItems = () => {
     const getItems = async () => {
       // depending on user role, call different get:
       let res;
-      const user = JSON.parse(localStorage.getItem(`user`));
       if (user.role == 1) {
         res = await getUsersItemsData(user);
-      } else res = await getAllItemsData();
+        setAdmin(false);
+      } else {
+        res = await getAllItemsData();
+        setAdmin(true);
+      }
       console.log(res);
       setAllItems(res);
 
@@ -69,7 +75,7 @@ const ViewItems = () => {
           <br />
           <FilterItems />
           <br />
-          <ItemsTable allItems={shownItems} />
+          <ItemsTable allItems={shownItems} isAdmin={admin} />
         </>
       )}
     </div>
