@@ -42,7 +42,7 @@ content-type: application/json
 
 {
     "name" : "Rope",
-    "description": "133 ft of Rope",
+    "description": "137 ft of Rope",
     "tagList": ["Item", "Adventurer Supplies", "Long"]
 }
 

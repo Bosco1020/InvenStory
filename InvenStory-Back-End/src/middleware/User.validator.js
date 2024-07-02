@@ -32,7 +32,3 @@ export default class UserValidator {
         next();
     };
 }
-
-// ^[\w\.]+@([\w-]+\.+[\w-])+[\w-]{1,4}$
-
-// /^[\w-\.]+@([\w-]+\.+[\w-])+[\w-]{1,4}$/

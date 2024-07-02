@@ -172,7 +172,6 @@ describe("Items Tests", () => {
             // Act
             const res = await request.post("/item").send({item: "not an item"});
             // Assert
-            console.log(res.body.message);
             expect(res.status).to.equal(400);
         });
 
@@ -210,7 +209,6 @@ describe("Items Tests", () => {
             // Act
             const res = await request.post("/item/useritems").send(tempUser);
             // Assert
-            console.log(res.body);
             expect(res.body[0].name).to.equal("Book");
             expect(res.body[0].description).to.equal("A weird book found in the forest");
             expect(res.body[1].name).to.equal("Elder Wand");
@@ -242,6 +240,14 @@ describe("Items Tests", () => {
             expect(res.status).to.equal(200);
         });
 
+        it("Responds with HTTP 400 if invalid item object sent", async () => {
+            // Arrange
+            const testItem = { name: "Not an item" };
+            // Act
+            const res = await request.put("/item").send(testItem);
+            // Assert
+            expect(res.status).to.equal(400);
+        });
     });
 });
     

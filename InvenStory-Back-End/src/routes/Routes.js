@@ -3,6 +3,7 @@ import { Router } from "express";
 import ItemController from "../controllers/Item.controller.js";
 import UserController from "../controllers/User.controller.js";
 import UserValidator from "../middleware/User.validator.js";
+import ItemValidator from "../middleware/Item.validator.js";
 
 export default class Routes {
     #itemController;
@@ -35,9 +36,9 @@ export default class Routes {
 
         this.#router.get("/item/:id", this.#itemController.getItemID)
 
-        this.#router.put("/item", this.#itemController.updateItem)
+        this.#router.put("/item", ItemValidator.validateItem(), this.#itemController.updateItem)
 
-        this.#router.post("/item", this.#itemController.addItem) //! Check with item validator
+        this.#router.post("/item", ItemValidator.validateItem(), this.#itemController.addItem) //! Check with item validator
     }
 
     getRouter = () => {
