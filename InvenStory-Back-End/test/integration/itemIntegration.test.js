@@ -248,6 +248,13 @@ describe("Items Tests", () => {
             // Assert
             expect(res.status).to.equal(400);
         });
+        it("Responds with edited item if successful", async () => {
+            // Arrange
+            // Act
+            const res = await request.put("/item").send(changedItem4);
+            // Assert
+            expect(res.body.tagList[0]).to.equal("Item");
+        });
     });
 });
     
