@@ -10,6 +10,11 @@ export default class UserService {
         return result;
     }
 
+    getUsersByItem = async (item) => {
+        const result = await User.find({assignedItems: `${item}`});
+        return result;
+    }
+
     addUser = async (newUser) => {
         let tUser;
         try {

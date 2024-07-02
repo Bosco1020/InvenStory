@@ -35,6 +35,19 @@ export default class UserController {
         }
     }
 
+    usersByItem = async (req, res) => {
+        const { item } = req.params;
+        try {
+            const allUsers = await this.#service.getUsersByItem(item);
+            // if (!allUsers[0]) {allUsers[0] = "-none-"; allUsers[1] = "";}
+                // throw new Error("ERROR: No Users with that item found in database");
+            res.status(200).json(allUsers);
+        }
+        catch (e) {
+            res.status(500).json({ message: e.message });
+        }
+    }
+
     addUser = async (req, res) => {
         const error = new Error("Invalid User Details");
         try {
