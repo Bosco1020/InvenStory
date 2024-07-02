@@ -2,7 +2,7 @@ import React from "react";
 
 import AccountForm from "./AccountForm";
 
-const SignUp = ({ setLoggedIn, logout }) => {
+const SignUp = ({ setLoggedIn, logout, updateUser }) => {
   return (
     <div className="container">
       <div className="d-flex justify-content-center align-items-center vh-100">
@@ -14,6 +14,7 @@ const SignUp = ({ setLoggedIn, logout }) => {
             changeLoggedIn={setLoggedIn}
             newAccount={true}
             setLogout={logout}
+            user={updateUser}
           />
           <div className="d-flex justify-content-center">
             <p>Already have an account?</p>
