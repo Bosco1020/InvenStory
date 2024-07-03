@@ -52,7 +52,9 @@ const ItemBox = ({ boxItem, tagList, admin, modal, DeleteItem }) => {
                 </div>
               </>
             ) : (
-              <div className="col-12"> </div>
+              <div className="col-12">
+                <ItemDetails details={boxItem} tags={tagList} isAdmin={admin} />
+              </div>
             )}
             <div className="row">
               <div className="col-1"></div>
