@@ -35,8 +35,6 @@ const FilterItems = () => {
   };
 
   useEffect(() => {
-    // console.log(searchParams.get("nameFilter"));
-    // console.log(searchParams.get("tagFilter"));
     if (!loading) return;
 
     if (
@@ -47,26 +45,6 @@ const FilterItems = () => {
       setTagFilter(searchParams.get("tagFilter"));
     }
 
-    // const applyFilter = async () => {
-    //   if (
-    //     searchParams.get("nameFilter") != "" ||
-    //     searchParams.get("tagFilter") != ""
-    //   ) {
-    //     setName(searchParams.get("nameFilter"));
-    //     setTag(searchParams.get("tagFilter"));
-    //     // const data = { name: name, tag: tag };
-    //     // Filters(data);
-    //     console.log("FILTERS: " + name + ", " + tag);
-    //     // console.log(Filters);
-    //     //window.location.href = "/weather/" + search;
-    //   }
-
-    //const resp = await getCityWeather(id);
-
-    // Check if city, if not go to home
-    // if (resp == null) {
-    //   window.location.href = "/?search=fail";
-    // }
     setLoading(false);
   }),
     [];
