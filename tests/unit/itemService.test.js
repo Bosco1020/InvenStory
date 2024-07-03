@@ -1,6 +1,7 @@
 import axiosMock from "axios";
 import { getAllItemsData, getUsersItemsData } from "../../src/service/items.service";
 import getTestItems from "../data/testItems";
+import { afterEach, beforeEach } from "vitest";
 const { testItems, dbItems } = await getTestItems();
 
 vi.mock('axios');
@@ -56,44 +57,66 @@ describe('External Data Tests', () => {
             });
         });
     });
-    // describe('submitTodoService tests', () => {
-    //     describe('POST a new todo tests', () => {
-    //         const testSubmittedTodo = {
-    //             todoDescription: `New Test Todo`,
-    //             todoDateCreated: new Date().toUTCString(),
-    //             todoCompleted: false
-    //         }
+    describe('getUsersItemsData tests', () => {
+        const testUser = {
+            "name": "Sammy",
+            "email": "SammE@example.com",
+            "password": "SamPass22!",
+            "assignedItems": ["Book", "Elder Wand"],
+            "role": 1
+        };
+
+        beforeEach(() => {
+            localStorage.setItem(`user`, JSON.stringify(testUser));
+        })
+
+        afterEach(() => {
+            localStorage.removeItem(`user`);
+        })
+
+        describe('POST retrieve items assigned to user', () => {
+            // const testSubmittedTodo = {
+            //     todoDescription: `New Test Todo`,
+            //     todoDateCreated: new Date().toUTCString(),
+            //     todoCompleted: false
+            // }
             
-    //         const test_id = generateTodoId();
+            // const test_id = generateTodoId();
 
-    //         test('should call axios post with correct URL and data', async () => {
+            test('should call axios post with correct URL and data', async () => {
+                const User = JSON.parse(localStorage.getItem(`user`));
+                delete User['accessToken'];
+                delete User['_id'];
 
-    //             functionResult = await submitTodoService(testSubmittedTodo);
+                functionResult = await getUsersItemsData(User);
 
-    //             expect(axiosMock.post).toHaveBeenCalledTimes(1);
-    //             expect(axiosMock.post).toHaveBeenCalledWith(import.meta.env.VITE_TODOSURL, testSubmittedTodo);
+                expect(axiosMock.post).toHaveBeenCalledTimes(1);
+                // expect(axiosMock.post).toHaveBeenCalledWith(import.meta.env.VITE_APP_API_URL, User, );
                 
-    //         });
+            });
 
-    //         test('should return the correct data with successful POST call', async () => {
-    //             axiosMock.post.mockResolvedValueOnce({ data: { ...testSubmittedTodo, _id: test_id } });
+            test('should return the correct data with successful POST call', async () => {
+                const User = JSON.parse(localStorage.getItem(`user`));
+                delete User['accessToken'];
+                delete User['_id'];
 
-    //             functionResult = await submitTodoService(testSubmittedTodo);
+                axiosMock.post.mockResolvedValueOnce({ data: { dbItems } });
+
+                functionResult = await getUsersItemsData(User);
                 
-    //             expect(functionResult.todo).toEqual(expect.objectContaining({
-    //                 ...testSubmittedTodo,
-    //                 _id: test_id
-    //             }));
-    //         });
+                expect(functionResult).toEqual(expect.objectContaining({
+                    dbItems
+                }));
+            });
 
-    //         test('should return an Error object with provided error message', async () => {
-    //             const expectedReturn = new Error(`Test POST Error`);
-    //             axiosMock.post.mockRejectedValueOnce(expectedReturn);
-    //             functionResult = await submitTodoService();
+            test('should return an Error object with provided error message', async () => {
+                const expectedReturn = new Error(`Test POST Error`);
+                axiosMock.post.mockRejectedValueOnce(expectedReturn);
+                functionResult = await getUsersItemsData();
 
-    //             expect(functionResult.message).toBe(expectedReturn.message);
-    //         });
-    //     });
+                expect(functionResult.message).toBe(expectedReturn.message);
+            });
+        // });
 
     //     describe('Update todo tests', () => {
 
@@ -122,7 +145,7 @@ describe('External Data Tests', () => {
     //             functionResult = await submitTodoService(updatedTodo);
 
     //             expect(functionResult.message).toBe(expectedReturn.message);
-    //         });
-    //     });
-    // });
+            // });
+        });
+    });
 });
