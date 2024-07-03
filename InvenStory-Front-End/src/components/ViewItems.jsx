@@ -41,7 +41,6 @@ const ViewItems = () => {
         res = await getAllItemsData();
         setAdmin(true);
       }
-      console.log(res);
       setAllItems(res);
 
       // Check if filters applied
@@ -59,8 +58,6 @@ const ViewItems = () => {
           res
         );
         setShownItems(filtered);
-        console.log("Filter Results:");
-        console.log(filtered);
       }
 
       setLoading(false);

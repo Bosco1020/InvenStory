@@ -48,7 +48,7 @@ const getTestItems = async () => {
         dbItems: [
             {
                     "name": "Book",
-                    "description": "A weird book found in the forest",
+                    "description": "Sample Test",
                     "tagList": [
                         "Item",
                         "Book",
@@ -57,7 +57,7 @@ const getTestItems = async () => {
             },
             {
                     "name": "Elder Wand",
-                    "description": "Gifted by Harry Hopper, the bun who lived",
+                    "description": "Sample Test",
                     "tagList": [
                         "Wand",
                         "Item"
@@ -65,7 +65,7 @@ const getTestItems = async () => {
             },
             {
                     "name": "Space Rock",
-                    "description": "One of the Finity rocks",
+                    "description": "Sample Test",
                     "tagList": [
                         "Finity Rock",
                         "Item",
@@ -74,12 +74,12 @@ const getTestItems = async () => {
             },
             {
                     "name": "Cursed",
-                    "description": "You got cursed by that one guy",
+                    "description": "Sample Test",
                     "tagList": []
             },
             {
                     "name": "Buzz Movie",
-                    "description": "According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible. Yellow, black. Yellow, black. Yellow, black. Yellow, black. Ooh, black and yellow! Let's shake it up a little.",
+                    "description": "Sample Test",
                     "tagList": []
             }
         ]
