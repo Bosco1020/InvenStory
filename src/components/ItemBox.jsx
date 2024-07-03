@@ -8,7 +8,7 @@ import { getAllUsers } from "../service/admin.service.js";
 
 import "./CSS/ItemBox.css";
 
-const ItemBox = ({ boxItem, tagList, admin, modal }) => {
+const ItemBox = ({ boxItem, tagList, admin, modal, DeleteItem }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -84,7 +84,7 @@ const ItemBox = ({ boxItem, tagList, admin, modal }) => {
                       type="button"
                       className="btn item-btn"
                       onClick={(e) => {
-                        modal(boxItem);
+                        DeleteItem(boxItem);
                       }}
                     >
                       Delete

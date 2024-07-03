@@ -53,3 +53,17 @@ export const addItem = async (item) => {
         return e;
     }
 }
+
+export const deleteItem = async (_id) => {
+    // call API to update item in database,
+    try {
+        const res = await axios.delete(`${ITEM_URL}/${_id}`, { headers: authToken() });
+
+        // if (res.data[0] == undefined) res.data[0] = { name: "-not Found-" };
+        return res.data;
+    }
+    catch (e) {
+        console.log(e.message);
+        return e;
+    }
+}
