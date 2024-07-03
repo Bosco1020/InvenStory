@@ -18,11 +18,17 @@ const ViewItems = () => {
   const [allItems, setAllItems] = useState([]);
   const [shownItems, setShownItems] = useState([]);
 
+  const [addOpen, setAddOpen] = useState(false);
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const user = JSON.parse(localStorage.getItem(`user`));
 
   //? DO need check incase open / while not logged in? Sorted in App?
+
+  //   const openAddModal = () => {
+  //     setAddOpen(true);
+  //   };
 
   useEffect(() => {
     const getItems = async () => {
@@ -73,11 +79,18 @@ const ViewItems = () => {
       ) : (
         <>
           <br />
-          <FilterItems />
+          <FilterItems setOpen={setAddOpen} />
           <br />
-          <ItemsTable allItems={shownItems} isAdmin={admin} />
+          <ItemsTable
+            allItems={shownItems}
+            isAdmin={admin}
+            open={addOpen}
+            setOpen={setAddOpen}
+          />
         </>
       )}
+      <br />
+      <br />
     </div>
   );
 };

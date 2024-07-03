@@ -4,27 +4,47 @@ import { useState } from "react";
 import ItemBox from "./ItemBox.jsx";
 import ItemModel from "../utils/Item.model.js";
 
-import { editItem } from "../service/admin.service.js";
+import { editItem, addItem } from "../service/admin.service.js";
 
 import Modal from "./Modal.jsx";
 
-const ItemsTable = ({ allItems, isAdmin }) => {
+const ItemsTable = ({ allItems, isAdmin, open, setOpen }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
   const [editTarget, setEditTarget] = useState({});
 
-  const openModal = (target) => {
+  const openEdit = (target) => {
     setEditTarget(target);
-    setIsModalOpen(true);
+    setEditOpen(true);
   };
 
-  const closeModal = async (item) => {
-    setIsModalOpen(false);
+  const openAdd = () => {
+    const newItem = {
+      name: "",
+      description: "",
+      tagList: [""],
+    };
+    setEditTarget(newItem);
+    setOpen(true);
+  };
+
+  const closeEdit = async (item) => {
+    setEditOpen(false);
     // const tagList = tags.split(", ");
     if (item != null) {
       const res = await editItem(item);
       console.log(res);
       window.location.href = "/";
     } //if(res.name != "-not Found-")
+  };
+
+  const closeAdd = async (item) => {
+    setOpen(false);
+    if (item != null) {
+      const res = await addItem(item);
+      console.log(res);
+      window.location.href = "/";
+    }
   };
 
   // Show n boxes
@@ -48,7 +68,7 @@ const ItemsTable = ({ allItems, isAdmin }) => {
           tagList={allTags}
           key={item._id}
           admin={isAdmin}
-          modal={openModal}
+          modal={openEdit}
         />
       </div>
     );
@@ -56,7 +76,10 @@ const ItemsTable = ({ allItems, isAdmin }) => {
 
   return (
     <div>
-      {isModalOpen && <Modal CloseModal={closeModal} item={editTarget} />}
+      {editOpen && (
+        <Modal CloseModal={closeEdit} item={editTarget} isNew={false} />
+      )}
+      {open && <Modal CloseModal={closeAdd} item={editTarget} isNew={true} />}
       <div className="container-fluid">
         <div className="row align-items-start">
           <br />
