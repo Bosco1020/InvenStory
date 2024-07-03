@@ -167,4 +167,40 @@ describe("Account Form Tests", () => {
       expect(signUp).toHaveBeenCalled();
     });
   });
+  // describe("Login form Tests", () => {
+  //   vi.mock("../src/middleware/form.validation.js", () => ({
+  //     default: {
+  //       validatePassword: vi.fn(),
+  //       validateEmail: vi.fn(),
+  //       changeEmail: vi.fn(),
+  //       changePassword: vi.fn(),
+  //       changeUsername: vi.fn(),
+  //     },
+  //     validatePassword: vi.fn(),
+  //     validateEmail: vi.fn(),
+  //     changeEmail: vi.fn(),
+  //     changePassword: vi.fn(),
+  //     changeUsername: vi.fn(),
+  //   }));
+
+  //   vi.mock("../src/service/auth.service.js", () => ({
+  //     default: {
+  //       signUp: vi.fn(),
+  //     },
+  //     signUp: vi.fn(),
+  //   }));
+
+  //   beforeEach(() => {
+  //     render(
+  //       <Login
+  //         setLoggedIn={() => {}}
+  //         logout={() => {}}
+  //         updateUser={() => {}}
+  //       />,
+  //       {
+  //         wrapper: MemoryRouter,
+  //       }
+  //     );
+  //   });
+  // });
 });
