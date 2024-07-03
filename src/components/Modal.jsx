@@ -71,7 +71,7 @@ const Modal = ({ CloseModal, item, isNew }) => {
                       className="itemName modalInput"
                       id="NameInput"
                       value={name}
-                      placeholder=""
+                      placeholder="Item Name"
                       onChange={(e) => {
                         setName(e.target.value);
                       }}
@@ -99,6 +99,7 @@ const Modal = ({ CloseModal, item, isNew }) => {
                       rows="3"
                       id="descInput"
                       value={description}
+                      placeholder="Add a description"
                       onChange={(e) => {
                         setDescription(e.target.value);
                       }}
