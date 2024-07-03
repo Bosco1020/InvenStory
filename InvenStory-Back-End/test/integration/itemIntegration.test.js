@@ -228,14 +228,18 @@ describe("Items Tests", () => {
     describe("PUT '/item'", async () => {
         let changedItem4;
 
-        before(() => {
-            changedItem4 = { ...testItems[4], tagList: ["Item"]};
+        beforeEach(async () => {
+            let all = await request.get("/item/allitems");
+            let id = all.body[4]._id;
+            changedItem4 = { ...dbItems[4], _id: id };
+            changedItem4 = { ...changedItem4, tagList: ["Item"] };
         })
 
         it("Responds with HTTP 200 if successful", async () => {
             // Arrange
             // Act
             const res = await request.put("/item").send(changedItem4);
+            console.log(res.data);
             // Assert
             expect(res.status).to.equal(200);
         });
