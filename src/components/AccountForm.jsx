@@ -115,9 +115,7 @@ const AccountForm = ({ changeLoggedIn, newAccount, setLogout, user }) => {
               </label>
             </>
           ) : (
-            <>
-              <br />
-            </>
+            <></>
           )}
           <br />
           <br />

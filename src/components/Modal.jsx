@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./CSS/Modal.css";
 
-const Modal = ({ CloseModal, item }) => {
+const Modal = ({ CloseModal, item, isNew }) => {
   const [loading, setLoading] = useState(true);
 
   const [name, setName] = useState("");
@@ -20,13 +20,14 @@ const Modal = ({ CloseModal, item }) => {
 
   useEffect(() => {
     if (!loading) return;
-
     setName(item.name);
     setDescription(item.description);
     let allTags = "";
-    for (let i = 0; i < item.tagList.length; i++) {
-      allTags += item.tagList[i];
-      if (i != item.tagList.length - 1) allTags += ", ";
+    if (!isNew) {
+      for (let i = 0; i < item.tagList.length; i++) {
+        allTags += item.tagList[i];
+        if (i != item.tagList.length - 1) allTags += ", ";
+      }
     }
     setTags(allTags);
 
@@ -42,7 +43,11 @@ const Modal = ({ CloseModal, item }) => {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Edit: {`${item.name}`}</h5>
+            {isNew ? (
+              <h5 className="modal-title">New Item</h5>
+            ) : (
+              <h5 className="modal-title">Edit: {`${item.name}`}</h5>
+            )}
             <button
               type="button"
               className="btn-close"
@@ -74,7 +79,7 @@ const Modal = ({ CloseModal, item }) => {
                   <label className="container align-items-center">
                     Tags <br />
                     <textarea
-                      class="form-control"
+                      className="form-control"
                       rows="1"
                       id="tagInput"
                       value={tags}
@@ -88,7 +93,7 @@ const Modal = ({ CloseModal, item }) => {
                   <label className="container align-items-center">
                     Item Description <br />
                     <textarea
-                      class="form-control"
+                      className="form-control"
                       rows="3"
                       id="descInput"
                       value={description}
