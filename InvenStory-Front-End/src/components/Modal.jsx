@@ -20,10 +20,12 @@ const Modal = ({ CloseModal, item, isNew }) => {
 
   useEffect(() => {
     if (!loading) return;
-    setName(item.name);
-    setDescription(item.description);
+    setName("");
+    setDescription("");
     let allTags = "";
     if (!isNew) {
+      setName(item.name);
+      setDescription(item.description);
       for (let i = 0; i < item.tagList.length; i++) {
         allTags += item.tagList[i];
         if (i != item.tagList.length - 1) allTags += ", ";

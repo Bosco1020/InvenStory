@@ -4,7 +4,7 @@ import { useState } from "react";
 import ItemBox from "./ItemBox.jsx";
 import ItemModel from "../utils/Item.model.js";
 
-import { editItem, addItem } from "../service/admin.service.js";
+import { editItem, addItem, deleteItem } from "../service/admin.service.js";
 
 import Modal from "./Modal.jsx";
 
@@ -18,22 +18,11 @@ const ItemsTable = ({ allItems, isAdmin, open, setOpen }) => {
     setEditOpen(true);
   };
 
-  const openAdd = () => {
-    const newItem = {
-      name: "",
-      description: "",
-      tagList: [""],
-    };
-    setEditTarget(newItem);
-    setOpen(true);
-  };
-
   const closeEdit = async (item) => {
     setEditOpen(false);
     // const tagList = tags.split(", ");
     if (item != null) {
       const res = await editItem(item);
-      console.log(res);
       window.location.href = "/";
     } //if(res.name != "-not Found-")
   };
@@ -42,9 +31,13 @@ const ItemsTable = ({ allItems, isAdmin, open, setOpen }) => {
     setOpen(false);
     if (item != null) {
       const res = await addItem(item);
-      console.log(res);
       window.location.href = "/";
     }
+  };
+
+  const deleteItemButton = (item) => {
+    deleteItem(item._id);
+    window.location.href = "/";
   };
 
   // Show n boxes
@@ -69,6 +62,7 @@ const ItemsTable = ({ allItems, isAdmin, open, setOpen }) => {
           key={item._id}
           admin={isAdmin}
           modal={openEdit}
+          DeleteItem={deleteItemButton}
         />
       </div>
     );
