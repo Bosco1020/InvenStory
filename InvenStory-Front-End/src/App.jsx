@@ -9,7 +9,6 @@ import SignUp from "./components/SignUp.jsx";
 
 import { logout } from "./service/auth.service.js";
 
-import Test from "./components/Test.jsx"; //! Development only
 import ViewItems from "./components/ViewItems.jsx";
 
 import "../src/components/CSS/App.css";
