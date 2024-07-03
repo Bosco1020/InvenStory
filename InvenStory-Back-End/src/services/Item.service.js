@@ -46,11 +46,15 @@ export default class ItemService {
         catch (e) {
             throw new Error("Item validation failed");
         }
-        return await Item.findOneAndUpdate({ name: tItem.name },
+        return await Item.findOneAndUpdate({ _id: tItem._id },
             {
                 $set: {
                     'name': tItem.name, 'description': tItem.description, 'tagList' : tItem.tagList
                 }
             }, {new: true});
+    }
+
+    removeItem = async (_id) => {
+        return await Item.findOneAndDelete({_id: _id});
     }
 }

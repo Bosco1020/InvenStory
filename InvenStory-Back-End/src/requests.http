@@ -41,8 +41,9 @@ PUT HTTP://localhost:3000/item
 content-type: application/json
 
 {
+    "_id":"6682df731643b3fcead5b39a", 
     "name" : "Rope",
-    "description": "137 ft of Rope",
+    "description": "130 ft of Rope",
     "tagList": ["Item", "Adventurer Supplies", "Long"]
 }
 

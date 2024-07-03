@@ -38,6 +38,8 @@ export default class Routes {
 
         this.#router.put("/item", ItemValidator.validateItem(), this.#itemController.updateItem)
 
+        this.#router.delete("/item/:_id", this.#itemController.deleteItem)
+
         this.#router.post("/item", ItemValidator.validateItem(), this.#itemController.addItem) //! Check with item validator
     }
 

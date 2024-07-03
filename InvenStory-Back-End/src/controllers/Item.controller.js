@@ -67,4 +67,14 @@ export default class ItemController {
             res.status(500).json({ message: e.message });
         }
     }
+
+    deleteItem = async (req, res) => {
+        try {
+            const { _id } = req.params;
+            res.status(200).json(await this.#service.removeItem(_id));
+        }
+        catch (e) {
+            res.status(500).json({ message: e.message });
+        }
+    }
 }
