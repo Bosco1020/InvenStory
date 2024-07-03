@@ -11,5 +11,4 @@ test(`It should create the expected object when the constuctor is called`, () =>
     expect(testItem.tagList[0]).toBe(tagList[0]);
     expect(testItem.tagList[1]).toBe(tagList[1]);
     expect(testItem).toBeInstanceOf(ItemModel);
-
 })
