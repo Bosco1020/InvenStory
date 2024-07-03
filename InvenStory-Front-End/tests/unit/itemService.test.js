@@ -34,14 +34,14 @@ describe('External Data Tests', () => {
             });
         });
 
-        describe.skip('EmptyArray Returned', () => {
+        describe('EmptyArray Returned', () => {
            
-            test('should return an Error object with "There are no Items" in its message', async () => {
+            test('should return nothing', async () => {
                 const expectedReturn = { data: [], status: 200 };
                 axiosMock.get.mockResolvedValueOnce(expectedReturn);
-                functionResult = await getTodosService();
+                functionResult = await getAllItemsData();
 
-                expect(functionResult.message).toContain(`There are no Items`);
+                expect(functionResult.message).toEqual(undefined);
             });
         });
 
