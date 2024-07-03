@@ -23,25 +23,42 @@ const AccountForm = ({ changeLoggedIn, newAccount, setLogout, user }) => {
 
   const updateEmailValidation = (updateEmail) => {
     if (!newAccount) return; //Only show help text if creating
-    if (validateEmail(updateEmail)) setGoodEmail("Valid");
-    else setGoodEmail("Invalid");
+    if (validateEmail(updateEmail)) changeEmail("Valid");
+    else changeEmail("Invalid");
   };
 
   const updatePasswordValidation = (updatePassword) => {
     if (!newAccount) return;
-    if (validatePassword(updatePassword)) setGoodPassword("Valid");
-    else setGoodPassword("Invalid");
+    if (validatePassword(updatePassword)) changePassword("Valid");
+    else changePassword("Invalid");
   };
 
   const updateUserNameValidation = (updateUsername) => {
     if (!newAccount) return;
-    if (updateUsername.trim().length > 0) setGoodUserName("Valid");
-    else setGoodUserName("Invalid");
+    if (updateUsername.trim().length > 0) changeUsername("Valid");
+    else changeUsername("Invalid");
+  };
+
+  const changeEmail = (state) => {
+    setGoodEmail(state);
+  };
+
+  const changePassword = (state) => {
+    setGoodPassword(state);
+  };
+
+  const changeUsername = (state) => {
+    setGoodUserName(state);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!goodEmail || !goodPassword) return;
+    if (
+      goodEmail == "Invalid" ||
+      goodPassword == "Invalid" ||
+      goodUserName == "Invalid"
+    )
+      return;
 
     let response;
     if (!newAccount) {
@@ -55,7 +72,7 @@ const AccountForm = ({ changeLoggedIn, newAccount, setLogout, user }) => {
       response = await signUp(userName, email, password);
       if (response._id) navigate(`/Login`);
     }
-    console.log(response);
+    // console.log(response);
   };
 
   useEffect(() => {
@@ -90,6 +107,18 @@ const AccountForm = ({ changeLoggedIn, newAccount, setLogout, user }) => {
               }}
             />
           </label>
+          {goodUserName == "Invalid" ? (
+            <>
+              <br />
+              <label>
+                <p className="Invalid">Please enter a User Name</p>
+              </label>
+            </>
+          ) : (
+            <>
+              <br />
+            </>
+          )}
           <br />
           <br />
           <label>
