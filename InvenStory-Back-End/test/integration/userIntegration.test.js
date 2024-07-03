@@ -236,4 +236,51 @@ describe("Authentication tests", () => {
             expect(res.status).to.equal(400);
         });
     });
+
+    describe("GET '/auth/usersbyitem/:item' requests", () => {
+        let testItem;
+        beforeEach(() => {
+            testItem = {
+                    "_id": "",
+                    "name": "Elder Wand",
+                    "description": "Gifted by Harry Hopper, the bun who lived",
+                    "tagList": [
+                        "Wand",
+                        "Item"
+                    ]
+            }
+        })
+        it("Responds with HTTP 200 if successful", async () => {
+            // Arrange
+            // Act
+            const res = await request.get(`/auth/usersbyitem/${testItem.name}`);
+            // Assert
+            expect(res.status).to.equal(200);
+        });
+
+        it("Responds with matching user", async () => {
+            // Arrange
+            // Act
+            const res = await request.get(`/auth/usersbyitem/${testItem.name}`);
+            // Assert
+            expect(res.body[0].name).to.equal(dbUsers[0].name);
+        });
+
+        it("Responds with list of matching users", async () => {
+            // Arrange
+            // Act
+            const res = await request.get(`/auth/usersbyitem/Book`);
+            // Assert
+            expect(res.body[0].name).to.equal(dbUsers[0].name);
+            expect(res.body[1].name).to.equal(dbUsers[1].name);
+        });
+
+        it("Responds with HTTP 400 if update isn't a valid user object", async () => {
+            // Arrange
+            // Act
+            const res = await request.get(`/auth/usersbyitem/BLANK`);
+            // Assert
+            expect(res.status).to.equal(400);
+        });
+    });
 });

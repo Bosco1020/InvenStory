@@ -39,11 +39,12 @@ export default class UserController {
         const { item } = req.params;
         try {
             const allUsers = await this.#service.getUsersByItem(item);
-            // if (!allUsers[0]) {allUsers[0] = "-none-"; allUsers[1] = "";}
+            if (!allUsers[0]) throw new Error("ERROR: No Users with that item found in database");
                 // throw new Error("ERROR: No Users with that item found in database");
             res.status(200).json(allUsers);
         }
         catch (e) {
+            if (e.message == "ERROR: No Users with that item found in database") res.status(400).json({ message: e.message });
             res.status(500).json({ message: e.message });
         }
     }

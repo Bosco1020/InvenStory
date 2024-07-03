@@ -12,6 +12,7 @@ const getTestUser = async () => {
                 "email": "SammE@example.com",
                 "password": await hashPassword("SamPass22!"),
                 "role": 1,
+                "assignedItems": ["Book", "Elder Wand"],
                 "__v": 0
             },
 
@@ -20,6 +21,7 @@ const getTestUser = async () => {
                 "email": "JulYee@exp.co.uk",
                 "password": await hashPassword("Jul@Yee33"),
                 "role": 2,
+                "assignedItems": ["Book"],
                 "__v": 0
             }
         ],
