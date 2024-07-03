@@ -45,18 +45,18 @@ describe('External Data Tests', () => {
             });
         });
 
-        // describe('Error Returned', () => {
+        describe('Error Returned', () => {
            
-        //     test('should return an Error object with provided error message', async () => {
-        //         const expectedReturn = new Error(`Test GET Error`);
-        //         axiosMock.get.mockRejectedValueOnce(expectedReturn);
-        //         functionResult = await getTodosService();
+            test('should return an Error object with provided error message', async () => {
+                const expectedReturn = new Error(`Test GET Error`);
+                axiosMock.get.mockRejectedValueOnce(expectedReturn);
+                functionResult = await getAllItemsData();
 
-        //         expect(functionResult.message).toBe(expectedReturn.message);
-        //     });
-        // });
+                expect(functionResult.message).toBe(expectedReturn.message);
+            });
+        });
     });
-    // describe.skip('submitTodoService tests', () => {
+    // describe('submitTodoService tests', () => {
     //     describe('POST a new todo tests', () => {
     //         const testSubmittedTodo = {
     //             todoDescription: `New Test Todo`,
