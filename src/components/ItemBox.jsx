@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 import ItemDetails from "./ItemDetails.jsx";
-import ItemUsers from "./ItemUsers.jsx";
+// import ItemUsers from "./ItemUsers.jsx";
 
 import { getAllUsers } from "../service/admin.service.js";
 
@@ -48,7 +48,7 @@ const ItemBox = ({ boxItem, tagList, admin, modal, DeleteItem }) => {
                   />
                 </div>
                 <div className="col-6">
-                  <ItemUsers details={boxItem} allUsers={users} />
+                  {/* <ItemUsers details={boxItem} allUsers={users} /> */}
                 </div>
               </>
             ) : (

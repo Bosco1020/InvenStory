@@ -72,19 +72,12 @@ const AccountForm = ({ changeLoggedIn, newAccount, setLogout, user }) => {
       response = await signUp(userName, email, password);
       if (response._id) navigate(`/Login`);
     }
-    // console.log(response);
   };
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
-      //changeLoggedIn(false);
       navigate(`/`);
     }
-    /* //? Check if need, should be ok without
-    if (localStorage.getItem("user")) {
-      changeLoggedIn(true);
-    } else changeLoggedIn(false);
-    */
   }),
     [];
 

@@ -149,58 +149,63 @@ describe("Account Form Tests", () => {
       expect(signUp).not.toHaveBeenCalled();
     });
 
-    test.skip("Submit works if all fields are valid", async () => {
-      signUp.mockClear();
-      signUp.mockResolvedValue({ _id: "an id" });
+    // test("Submit works if all fields are valid", async () => {
+    //   signUp.mockClear();
+    //   signUp.mockResolvedValue({ _id: "an id" });
 
-      const submitBtn = screen.getByText("Submit");
-      const emailInput = screen.queryByPlaceholderText("example@email.com");
-      const nameInput = screen.queryByPlaceholderText("YourName");
-      const passwordInput = screen.queryByPlaceholderText("Enter Password");
+    //   const submitBtn = screen.getByText("Submit");
+    //   const emailInput = screen.queryByPlaceholderText("example@email.com");
+    //   const nameInput = screen.queryByPlaceholderText("YourName");
+    //   const passwordInput = screen.queryByPlaceholderText("Enter Password");
 
-      await userEvent.type(emailInput, "Email@good.com");
-      await userEvent.type(passwordInput, "GoodP@55word1");
-      await userEvent.type(nameInput, "Your Name");
+    //   await userEvent.type(emailInput, "Email@good.com");
+    //   await userEvent.type(passwordInput, "GoodP@55word1");
+    //   await userEvent.type(nameInput, "YourName");
 
-      await userEvent.click(submitBtn);
+    //   await userEvent.click(submitBtn);
 
-      expect(signUp).toHaveBeenCalled();
+    //   expect(signUp).toHaveBeenCalled();
+    // });
+  });
+  describe("Login form Tests", () => {
+    vi.mock("../src/middleware/form.validation.js", () => ({
+      default: {
+        validatePassword: vi.fn(),
+        validateEmail: vi.fn(),
+        changeEmail: vi.fn(),
+        changePassword: vi.fn(),
+        changeUsername: vi.fn(),
+      },
+      validatePassword: vi.fn(),
+      validateEmail: vi.fn(),
+      changeEmail: vi.fn(),
+      changePassword: vi.fn(),
+      changeUsername: vi.fn(),
+    }));
+
+    vi.mock("../src/service/auth.service.js", () => ({
+      default: {
+        signUp: vi.fn(),
+      },
+      signUp: vi.fn(),
+    }));
+
+    beforeEach(() => {
+      render(
+        <Login
+          setLoggedIn={() => {}}
+          logout={() => {}}
+          updateUser={() => {}}
+        />,
+        {
+          wrapper: MemoryRouter,
+        }
+      );
+    });
+    test("Renders Login Page", async () => {
+      const navigateSignUp = screen.getByText("Sign up here");
+
+      expect(navigateSignUp).toBeInTheDocument();
     });
   });
-  // describe("Login form Tests", () => {
-  //   vi.mock("../src/middleware/form.validation.js", () => ({
-  //     default: {
-  //       validatePassword: vi.fn(),
-  //       validateEmail: vi.fn(),
-  //       changeEmail: vi.fn(),
-  //       changePassword: vi.fn(),
-  //       changeUsername: vi.fn(),
-  //     },
-  //     validatePassword: vi.fn(),
-  //     validateEmail: vi.fn(),
-  //     changeEmail: vi.fn(),
-  //     changePassword: vi.fn(),
-  //     changeUsername: vi.fn(),
-  //   }));
-
-  //   vi.mock("../src/service/auth.service.js", () => ({
-  //     default: {
-  //       signUp: vi.fn(),
-  //     },
-  //     signUp: vi.fn(),
-  //   }));
-
-  //   beforeEach(() => {
-  //     render(
-  //       <Login
-  //         setLoggedIn={() => {}}
-  //         logout={() => {}}
-  //         updateUser={() => {}}
-  //       />,
-  //       {
-  //         wrapper: MemoryRouter,
-  //       }
-  //     );
-  //   });
-  // });
 });
