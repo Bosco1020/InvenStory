@@ -239,7 +239,6 @@ describe("Items Tests", () => {
             // Arrange
             // Act
             const res = await request.put("/item").send(changedItem4);
-            console.log(res.data);
             // Assert
             expect(res.status).to.equal(200);
         });
@@ -258,6 +257,36 @@ describe("Items Tests", () => {
             const res = await request.put("/item").send(changedItem4);
             // Assert
             expect(res.body.tagList[0]).to.equal("Item");
+        });
+    });
+
+    describe("DELETE '/item'", async () => {
+        // let changedItem4;
+
+        beforeEach(async () => {
+            // let all = await request.get("/item/allitems");
+            // let id = all.body[4]._id;
+            // changedItem4 = { ...dbItems[4], _id: id };
+            // changedItem4 = { ...changedItem4, tagList: ["Item"] };
+        })
+
+        it("Responds with HTTP 200 if successful", async () => {
+            // Arrange
+            // Act
+            console.log(testItems[4]._id)
+            const res = await request.delete(`/item/${testItems[4]._id}`);
+            // Assert
+            expect(res.status).to.equal(200);
+        });
+
+        it("Items in database reduced by 1 if successful", async () => {
+            // Arrange
+            const oldLength = testItems.length;
+            // Act
+            const res = await request.delete(`/item/${testItems[4]._id}`);
+            let all = await request.get("/item/allitems");
+            // Assert
+            expect(all.length).not.to.equal(oldLength);
         });
     });
 });
