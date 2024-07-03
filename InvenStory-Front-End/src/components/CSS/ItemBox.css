@@ -12,3 +12,13 @@
     border-color: black;
     background-color: whitesmoke;
 }
+
+.item-btn:not(:disabled) {
+    background-color: rgb(156, 19, 104);
+    color: rgb(0, 0, 0);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 15%;
+    border-color: black;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}

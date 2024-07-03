@@ -25,3 +25,18 @@ export const getAllUsers = async (item) => {
         return e;
     }
 };
+
+export const editItem = async (item) => {
+    // call API to update item in database,
+    try {
+        const res = await axios.put(`${ITEM_URL}`, item, { headers: authToken() });
+
+        if (res.data[0] == undefined) res.data[0] = { name: "-not Found-" };
+        return res.data;
+    }
+    catch (e) {
+        console.log(e.message);
+        return e;
+    }
+    // Reload page? Auto? Auto update when reloaded right?
+}
