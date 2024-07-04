@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import "./CSS/FilterBox.css";
 
-const FilterItems = ({ setOpen }) => {
+const FilterItems = ({ setOpen, isAdmin }) => {
   const [filterOpen, setFilterOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -126,20 +126,24 @@ const FilterItems = ({ setOpen }) => {
           </div>
         )}
       </div>
-      <div className="col-2">
-        <div className="container text-end">
-          <button
-            type="button"
-            className="btn btn-primary"
-            variant="primary"
-            size="lg"
-            onClick={(e) => {
-              setOpen(true);
-            }}
-          >
-            Add Item
-          </button>
-        </div>
+      <div className="col-md-2 col-sm-1">
+        {isAdmin ? (
+          <div className="container text-end">
+            <button
+              type="button"
+              className="btn btn-primary add-btn"
+              variant="primary"
+              size="lg"
+              onClick={(e) => {
+                setOpen(true);
+              }}
+            >
+              Add Item
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

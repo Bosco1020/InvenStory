@@ -59,7 +59,6 @@ const ViewItems = () => {
         );
         setShownItems(filtered);
       }
-
       setLoading(false);
     };
 
@@ -76,7 +75,7 @@ const ViewItems = () => {
       ) : (
         <>
           <br />
-          <FilterItems setOpen={setAddOpen} />
+          <FilterItems setOpen={setAddOpen} isAdmin={admin} />
           <br />
           <ItemsTable
             allItems={shownItems}
