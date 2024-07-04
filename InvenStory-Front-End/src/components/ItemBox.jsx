@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 import ItemDetails from "./ItemDetails.jsx";
-// import ItemUsers from "./ItemUsers.jsx";
 
 import { getAllUsers } from "../service/admin.service.js";
 
@@ -12,20 +11,12 @@ const ItemBox = ({ boxItem, tagList, admin, modal, DeleteItem }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  //   const deleteItem = () => {
-  //     modal();
-  //   };
-
-  //   const editItem = () => {
-  //     modal();
-  //   };
-
   useEffect(() => {
     if (!loading) return;
     const getUsers = async () => {
-      const allUsers = await getAllUsers(boxItem.name);
-      //   console.log(allUsers);
-      setUsers(allUsers);
+      // const allUsers = await getAllUsers(boxItem.name);
+      // //   console.log(allUsers);
+      // setUsers(allUsers);
       setLoading(false);
     };
 
