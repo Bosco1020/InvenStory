@@ -34,13 +34,17 @@ const ViewItems = () => {
     const getItems = async () => {
       // depending on user role, call different get:
       let res;
-      if (user.role == 1) {
-        res = await getUsersItemsData(user);
-        setAdmin(false);
-      } else {
-        res = await getAllItemsData();
-        setAdmin(true);
-      }
+      if (localStorage.getItem(`user`)) {
+        if (user.role == 1) {
+          res = await getUsersItemsData(user);
+          setAdmin(false);
+        } else {
+          res = await getAllItemsData();
+          setAdmin(true);
+        }
+      } else window.location.href = "/Login";
+      console.log(res);
+      if (res.message == "Request failed with status code 500") return;
       setAllItems(res);
 
       // Check if filters applied

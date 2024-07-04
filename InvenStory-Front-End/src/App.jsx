@@ -22,7 +22,6 @@ const App = () => {
 
   useEffect(() => {
     if (localStorage.getItem("user")) setLogIn(true);
-    console.log(loggedOut + " " + loggedIn);
     if (loggedIn == !loggedOut) return;
 
     const updateLoggedIn = async () => {

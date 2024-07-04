@@ -18,8 +18,8 @@ export const login = async (name, email, password) => {
 
 export const signUp = async (name, email, password) => {
     try {
-        const user = { name: name, email: email, password: password };
-        const res = await axios.post(`${URL}/signUp`, user, { headers: { "x-access-token": "token" } });
+        const user = { name: name, email: email, password: password, role: 1 };
+        const res = await axios.post(`${URL}/signUp`, user);
 
         return res.data;
     }
