@@ -8,7 +8,7 @@ import FilterItems from "../src/components/FilterItems";
 describe("Filter Items test", () => {
   const mockedOpen = vi.fn();
   beforeEach(() => {
-    render(<FilterItems setOpen={mockedOpen} />, {
+    render(<FilterItems setOpen={mockedOpen} isAdmin={true} />, {
       wrapper: MemoryRouter,
     });
   });

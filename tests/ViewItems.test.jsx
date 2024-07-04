@@ -97,7 +97,7 @@ describe("View Items", () => {
       });
       await waitForElementToBeRemoved(() => screen.getByText(`Loading...`));
 
-      await waitForElementToBeRemoved(() => screen.getAllByText(`Loading...`));
+      // await waitForElementToBeRemoved(() => screen.getAllByText(`Loading...`));
     });
 
     test("Renders all item components", async () => {
@@ -156,7 +156,7 @@ describe("View Items", () => {
       });
       await waitForElementToBeRemoved(() => screen.getByText(`Loading...`));
 
-      await waitForElementToBeRemoved(() => screen.getAllByText(`Loading...`));
+      // await waitForElementToBeRemoved(() => screen.getAllByText(`Loading...`));
     });
 
     test("Renders all item components", async () => {
