@@ -30,6 +30,8 @@ export default class Routes {
 
         this.#router.put("/auth/updateUserItems", UserValidator.validateUser(), this.#userController.updateUserItems)
 
+        this.#router.put("/auth/updateUserItems/:name", this.#userController.deleteItemFromUsers)
+
         this.#router.post("/auth/signup", UserValidator.validateUser(), this.#userController.addUser)
 
         this.#router.get("/item/allitems", this.#itemController.getItems)

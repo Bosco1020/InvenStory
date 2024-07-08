@@ -49,6 +49,16 @@ export default class UserController {
         }
     }
 
+    deleteItemFromUsers = async (req, res) => {
+    const { name } = req.params;
+    try {
+        res.status(200).json(await this.#service.deleteItem(name));
+    }
+    catch (e) {
+        res.status(500).json({ message: e.message });
+        }
+    }
+
     addUser = async (req, res) => {
         const error = new Error("Invalid User Details");
         try {

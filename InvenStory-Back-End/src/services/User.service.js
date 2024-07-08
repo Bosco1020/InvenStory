@@ -15,6 +15,12 @@ export default class UserService {
         return result;
     }
 
+    deleteItem = async (name) => {
+        const result = await User.updateMany({ assignedItems: `${name}` }, {$pull :{assignedItems: `${name}` }}, {multi: true});
+
+        return result;
+    }
+
     addUser = async (newUser) => {
         let tUser;
         try {
