@@ -55,11 +55,24 @@ export const addItem = async (item) => {
 }
 
 export const deleteItem = async (_id) => {
+    //! NEED TO ALSO REMOVE FROM ALL USERS
+    // Similar to usersByItem, create another delete for that and call immediately after
+
     // call API to update item in database,
     try {
         const res = await axios.delete(`${ITEM_URL}/${_id}`, { headers: authToken() });
-
         // if (res.data[0] == undefined) res.data[0] = { name: "-not Found-" };
+        return res.data;
+    }
+    catch (e) {
+        console.log(e.message);
+        return e;
+    }
+}
+
+export const deleteItemFromUsers = async (name) => {
+    try {
+        const res = await axios.put(`${URL}/updateUserItems/${name}`, { headers: authToken() });
         return res.data;
     }
     catch (e) {
