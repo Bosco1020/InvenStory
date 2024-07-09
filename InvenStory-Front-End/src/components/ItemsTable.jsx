@@ -4,7 +4,12 @@ import { useState } from "react";
 import ItemBox from "./ItemBox.jsx";
 import ItemModel from "../utils/Item.model.js";
 
-import { editItem, addItem, deleteItem } from "../service/admin.service.js";
+import {
+  editItem,
+  addItem,
+  deleteItem,
+  deleteItemFromUsers,
+} from "../service/admin.service.js";
 
 import Modal from "./Modal.jsx";
 
@@ -37,6 +42,7 @@ const ItemsTable = ({ allItems, isAdmin, open, setOpen }) => {
 
   const deleteItemButton = (item) => {
     deleteItem(item._id);
+    deleteItemFromUsers(item.name);
     window.location.href = "/";
   };
 
