@@ -1,36 +1,13 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/nadfrmGX)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=15285431&assignment_repo_type=AssignmentRepo)
-# Challenge 6 - Full-Stack Capstone Project
+# InvenStory
+## DF: Challenge 6 - Full-Stack Capstone Project
 
-```ascii
-  ..,.oooE777999V(;
-                                  ...oooP779090(;''       ''''  I
-                    ...ooB777979V;;''       .....=v}}=}=}=}}v==  5
-               97?(;''     .........< .    . .:.:.:.:.`:;``;;;;;;;;<;;;<;<<<<<<<<<<
-                 b ;           . : .:.:.:.`;;;;;;;;;;;<;;<;<<<<<<<<, I
-                 `,`               . : :.:.:.:.`.`;;;;;;;;;;;;<;<;<<. 5
-                  b ;                    . : .:.:.:.`;;;;;;;;;;;<;<;<: E
-                  `,<                         . . .:.:.:.``;;;;;;;;;;. I
-                   b :                             . . :.:.:.:.:.:.;;;. 5
-                   `>;                                  . .:..:.:.:.`.:  |
-                    b :                                      . . :.:.:.x T
-                    `,;                                          . . .::  E
-                     b :                                               _  !4
-                     `r :                                   __.__,--,;'))))).
-                      b :                         ___...--'; `))))))))' '' `>!9eOc
-                      `r :              __,--:-;;;)))))))))))'' '' ' ' _. -'-'.`!9Eg.
-                       L : . __.--_--:,)))))))))))'' ' '  _. ._.-'-'-'-'\-'\---\/\ ``Qu.
-                       `,: !x;:)))))))) ')'' ' _ _._-.'\'\_\_-'\''-\'_'\-'\'\ -_\'-\-. 95n.
-                        D` ))))'''  _ .___.-_:/-/\/-_\ /-_, /-,\ \-/_\/\,-\_/-\/-/--' ..v<]9o.
-                      __b :<> -_\._/\,- ,_ -\ _/\-\ _-\ -_/-\,\/,-/\_/-_\'\--' .vvvvvvv}v}}x}]NEo.
-                .ooPO%LOCu  `< `/\_ -:\/_/-/,\/,/-,/_,-/\ :_\:_-:__-'' ...vvvvvvvvvvvvxx}vx}}}}==No
-              .oPO'       `y. `< ~-\ _\/\_,- \ , - ,___..--' .......>>vvvvvvvvx>vvvvvvvvvv)v~~~`         iuuuaE'
-  .@tTL'                        `y,  `< .-vvv<<<<<<<<vvvvv=>~~~~`         _uuua'''
-.&P'                              `L,  `>>><<<<><>v~>^` `        _uuug'
-                                      `L,  ~~`          _uuua''
-                                        `L,:    _uuua''
-                                          `LaE''
-```
+## Hosted Site:
+https://invenstory.netlify.app
+
+Admin Login Details:
+DFUser1
+user1@df.com
+DFpassword1!
 
 ## Introduction
 
