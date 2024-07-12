@@ -9,7 +9,7 @@ Example Admin Login Details:
 - Email: user1@df.com
 - Password: DFpassword1!
 
-Example PLayer Login Details:
+Example Player Login Details:
 - User Name: DFUser2
 - Email: user2@df.com
 - Password: DFpassword2!
