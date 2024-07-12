@@ -20,4 +20,4 @@ InvenStory is an inventory management system for story based role-play games. Ad
 ### Architecture Overview
 InvenStory is a web pased application developed in Javascript. It's a React single page application, with a back-end REFTful API that connects to a MongoDB database.
 
-For futher details, please find the project proposal document.
+For futher details, please find the InvenStory project proposal PDF.
