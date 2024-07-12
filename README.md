@@ -1,7 +1,7 @@
 # InvenStory
 ## DF: Challenge 6 - Full-Stack Capstone Project
 
-## Hosted Site:
+### Hosted Site:
 https://invenstory.netlify.app
 
 Example Admin Login Details:
