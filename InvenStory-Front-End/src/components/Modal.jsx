@@ -64,7 +64,7 @@ const Modal = ({ CloseModal, item, isNew }) => {
               <div className="col-12">
                 <form onSubmit={handleSubmit}>
                   <label className="container align-items-center">
-                    Item Name <br />
+                    <h6 className="modal-names">Item Name </h6>
                     <input
                       type="text"
                       name="nameInput"
@@ -79,7 +79,7 @@ const Modal = ({ CloseModal, item, isNew }) => {
                   </label>
                   <br />
                   <label className="container align-items-center">
-                    Tags <br />
+                    <h6 className="modal-names">Tags </h6>
                     <textarea
                       className="form-control"
                       rows="1"
@@ -93,7 +93,7 @@ const Modal = ({ CloseModal, item, isNew }) => {
                   </label>
                   <br />
                   <label className="container align-items-center">
-                    Item Description <br />
+                    <h6 className="modal-names">Item Description </h6>
                     <textarea
                       className="form-control"
                       rows="3"

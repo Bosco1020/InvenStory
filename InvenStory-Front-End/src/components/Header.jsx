@@ -19,14 +19,13 @@ const Header = ({ loggedIn, updateLogout }) => {
   return (
     <header
       className="header-custom container-fluid  text-center fixed-top"
-      style={{ backgroundColor: "#47aeed", color: "white" }}
+      style={{ backgroundColor: "#d4b200", color: "white" }} //#47aeed
     >
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <nav className="navbar">
             <div className="container">
-              <a className="navbar-brand" href="/"></a>
-              <img className="DFLogo" src="/assets/Logo.svg" href="/" />
+              <img className="DFLogo" src="/assets/Logo.png" href="/" />
               <button
                 className="navbar-toggler"
                 type="button"
@@ -43,7 +42,7 @@ const Header = ({ loggedIn, updateLogout }) => {
                 <ul className="navbar-nav">
                   {!loggedIn ? (
                     <li className="nav-item">
-                      <a className="nav-link" href="/Login">
+                      <a className="nav-link link-text" href="/Login">
                         Login
                       </a>
                     </li>
@@ -55,7 +54,7 @@ const Header = ({ loggedIn, updateLogout }) => {
                           className="btn"
                           onClick={(e) => logout()}
                         >
-                          Logout
+                          <a className="nav-link link-text">Logout</a>
                         </button>
                       </li>
                     </>

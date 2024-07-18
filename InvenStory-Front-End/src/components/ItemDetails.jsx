@@ -4,8 +4,8 @@ const ItemDetails = ({ details, tags }) => {
   return (
     <>
       <div className="container">
-        <p>{`${details.name}`}</p>
-        <p>Tags: {`${tags}`}</p>
+        <p className="item-name">{`${details.name}`}</p>
+        <p className="item-tags">Tags: {`${tags}`}</p>
       </div>
     </>
   );

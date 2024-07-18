@@ -6,7 +6,7 @@ const SignUp = ({ setLoggedIn, logout, updateUser }) => {
   return (
     <div className="container">
       <div className="d-flex justify-content-center align-items-center vh-100">
-        <div>
+        <div className="account-form">
           <h1> Please Enter your Account Details</h1>
           <br />
           <br />

@@ -10,7 +10,7 @@ import { filterByTag } from "../utils/item-filter.js";
 import FilterItems from "./FilterItems.jsx";
 import ItemsTable from "./ItemsTable.jsx";
 
-//import dummyData from "../../data/dummyItems.json";
+import { PixelSpinner } from "react-epic-spinners"; //https://github.com/bondz/react-epic-spinners
 
 const ViewItems = () => {
   const [loading, setLoading] = useState(true);
@@ -23,12 +23,6 @@ const ViewItems = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const user = JSON.parse(localStorage.getItem(`user`));
-
-  //? DO need check incase open / while not logged in? Sorted in App?
-
-  //   const openAddModal = () => {
-  //     setAddOpen(true);
-  //   };
 
   useEffect(() => {
     const getItems = async () => {
@@ -43,7 +37,6 @@ const ViewItems = () => {
           setAdmin(true);
         }
       } else window.location.href = "/Login";
-      console.log(res);
       if (res.message == "Request failed with status code 500") return;
       setAllItems(res);
 
@@ -74,8 +67,11 @@ const ViewItems = () => {
     <div>
       <br />
       <br />
+      <br />
       {loading ? (
-        <p>Loading...</p>
+        <div className="d-flex justify-content-center align-items-center vh-100">
+          <PixelSpinner color="#d4b200" size="300"></PixelSpinner>
+        </div>
       ) : (
         <>
           <br />

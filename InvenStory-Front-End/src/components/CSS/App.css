@@ -1,5 +1,6 @@
 .background-image {
-    background-color: #d89ff5;
-    min-height: 130vh;
+
+    background: url("/assets/Background.png");
+    min-height: 100vh;
     overflow: auto;
 }

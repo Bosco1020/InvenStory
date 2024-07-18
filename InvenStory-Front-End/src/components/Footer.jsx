@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div
       className="footer-custom container-fluid  text-center fixed-bottom"
-      style={{ backgroundColor: "#47aeed", color: "white" }}
+      style={{ backgroundColor: "#d4b200", color: "white" }}
     >
       <p>2024 Connor Boscherini </p>
     </div>
