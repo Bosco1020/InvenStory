@@ -87,7 +87,7 @@ const FilterItems = ({ setOpen, isAdmin }) => {
                   </label>
                   <button
                     type="submit"
-                    className="btn btn-primary filter-spacer"
+                    className="btn filter-btn filter-spacer"
                   >
                     Filter
                   </button>
@@ -117,7 +117,7 @@ const FilterItems = ({ setOpen, isAdmin }) => {
           <div className="container text-start">
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn filter-btn"
               variant="primary"
               onClick={openFilter}
             >

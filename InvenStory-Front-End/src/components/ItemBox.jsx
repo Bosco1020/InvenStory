@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 import ItemDetails from "./ItemDetails.jsx";
+import ItemTags from "./ItemTags.jsx";
 
 import { getAllUsers } from "../service/admin.service.js";
 
@@ -29,64 +30,66 @@ const ItemBox = ({ boxItem, tagList, admin, modal, DeleteItem }) => {
       {!loading ? (
         <>
           <div className="row">
-            {admin ? (
+            {admin ? ( // If Admin, shrink item name & tag for room for user details
               <>
-                <div className="col-6">
-                  <ItemDetails
-                    details={boxItem}
-                    tags={tagList}
-                    isAdmin={admin}
-                  />
-                </div>
-                <div className="col-6">
+                <div className="col-3 ticket-start">
                   {/* <ItemUsers details={boxItem} allUsers={users} /> */}
+                </div>
+                <div className="col-9 ticket-end">
+                  <div className="row">
+                    {/* partition end ticket into description and tags */}
+                    <div className="col-8 ticket-centre">
+                      <ItemDetails
+                        details={boxItem}
+                        tags={tagList}
+                        isAdmin={admin}
+                      />
+                      <div className="container text-left description item-box">
+                        <p>{`${boxItem.description}`}</p>
+                      </div>
+
+                      <div className="row">
+                        <div className="col-6">
+                          <div className="container text-start">
+                            <button
+                              type="button"
+                              className="btn item-btn"
+                              onClick={(e) => {
+                                modal(boxItem);
+                              }}
+                            >
+                              Edit
+                            </button>
+                          </div>
+                        </div>
+                        <div className="col-6">
+                          <div className="container text-end">
+                            <button
+                              type="button"
+                              className="btn item-btn"
+                              onClick={(e) => {
+                                DeleteItem(boxItem);
+                              }}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <br />
+                    </div>
+                    <div className="col-3">
+                      <ItemTags tags={tagList} />
+                    </div>
+                    <div className="col-1"></div>
+                  </div>
                 </div>
               </>
             ) : (
+              //Not an admin, so render item at full size
               <div className="col-12">
                 <ItemDetails details={boxItem} tags={tagList} isAdmin={admin} />
               </div>
-            )}
-            <div className="row">
-              <div className="col-1"></div>
-              <div className="col-10">
-                <div className="container text-left description item-box">
-                  <p>{`${boxItem.description}`}</p>
-                </div>
-                <div className="col-1"></div>
-              </div>
-            </div>
-            {admin ? (
-              <div className="row">
-                <div className="col-6">
-                  <div className="container text-start">
-                    <button
-                      type="button"
-                      className="btn item-btn"
-                      onClick={(e) => {
-                        modal(boxItem);
-                      }}
-                    >
-                      Edit
-                    </button>
-                  </div>
-                </div>
-                <div className="col-6">
-                  <div className="container text-end">
-                    <button
-                      type="button"
-                      className="btn item-btn"
-                      onClick={(e) => {
-                        DeleteItem(boxItem);
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <></>
             )}
           </div>
         </>

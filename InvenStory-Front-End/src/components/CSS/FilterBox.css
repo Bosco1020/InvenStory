@@ -1,5 +1,5 @@
 .filter-box {
-    background-color: #3c8ade;
+    background-color:rgb(228, 215, 44);
     border-radius: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -8,4 +8,17 @@
 .filter-spacer {
     margin-left: 3px;
     margin-right: 3px;
+}
+
+.btn.filter-btn {
+    background-color: orange;
+    border-radius: 10px;
+    border-color: black;
+}
+
+.btn.filter-btn:hover {
+    background-color: rgb(153, 100, 2);
+    border-radius: 10px;
+    border-color: black;
+    color: white;
 }

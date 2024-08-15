@@ -3,6 +3,11 @@ nav {
     top: 0;
     width: 100%;
     max-width: 100%;
+    height: 80px;
+}
+
+nav.navbar {
+    padding: 0px;
 }
 
 .navbar-nav {
@@ -14,10 +19,12 @@ nav {
 }
 
 .DFLogo {
-    width: 220px;
+    width: 280px;
 }
 
-.link-text {
+.link-text.nav-link {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: large;
+    font-size:larger;
+    margin-left: 10px;
+    margin-right: 10px;
 }
