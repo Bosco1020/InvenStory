@@ -85,7 +85,7 @@ const Modal = ({ CloseModal, item, isNew }) => {
                       rows="1"
                       id="tagInput"
                       value={tags}
-                      placeholder="Add Tags Here. Separate, With, A, Comma"
+                      placeholder="Add Tags Here: Separate, Each, With, A, Comma"
                       onChange={(e) => {
                         setTags(e.target.value);
                       }}
@@ -108,7 +108,7 @@ const Modal = ({ CloseModal, item, isNew }) => {
                   <br />
                   <br />
                   <div className="d-flex justify-content-center">
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className="btn submit-btn">
                       Submit
                     </button>
                   </div>

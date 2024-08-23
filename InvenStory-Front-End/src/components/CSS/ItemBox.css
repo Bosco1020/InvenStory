@@ -17,7 +17,7 @@
 }
 
 .ticket-start {
-    background-image: url("/assets/Ticket-Start.png");
+    background-image: url("/assets/Ticket-Start-3.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     min-height: 200px;
@@ -25,42 +25,50 @@
 }
 
 .ticket-end {
-    background-image: url("/assets/Ticket-End.png");
+    background-image: url("/assets/Ticket-End-3.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     min-height: 200px;
     padding-top: 5px;
 }
 
+.ticket-end.user-ticket {
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    max-width: 500px;
+}
+
 .col-8.ticket-centre {
     padding-right: 0px;
+    padding-left: 15px;
 }
 
 .container.item-detail-box {
     padding-right: 0px;
-    padding-top: 15px;
+    padding-top: 10px;
 }
 
-.tags-box {
+.container.tags-box {
     border-radius: 5px;
     padding: 5px;
     padding-top: 0px;
+    text-align: left;
+    margin-top: 10px;
+    padding-left: 0px;
 }
 
 .container.description {
     font-family: cursive;
     font-size: 13px;
-    background-color: whitesmoke;
-    border: 1px solid rgb(0, 0, 0);
-    max-width: 90%;
-    min-height: 50%;
     margin-top: 1px;
+    margin-bottom: 1px;
 }
 
 .item-name {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 21px;
-    color: rgb(0, 0, 0);
+    color: rgb(163, 71, 9);
     margin-bottom: 3px;
 }
 
@@ -71,7 +79,9 @@
 }
 
 .item-tags.bold {
+    font-size: 14px;
     font-weight: bold;
+    color: rgb(163, 71, 9);
 }
 
 .item-btn:not(:disabled) {
@@ -82,6 +92,7 @@
     border-color: black;
     padding-top: 1px;
     padding-bottom: 1px;
+    margin-bottom: 3px;
 }
 
 .item-btn:not(:disabled):hover {
@@ -92,4 +103,5 @@
     border-color: black;
     padding-top: 1px;
     padding-bottom: 1px;
+    margin-bottom: 3px;
 }

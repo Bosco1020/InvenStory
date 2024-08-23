@@ -13,3 +13,17 @@
         font-size: 15px;
         font-family: cursive;
 }
+
+.btn.submit-btn {
+    background-color: orange;
+    border-radius: 10px;
+    border-color: black;
+    color: black;
+}
+
+.btn.submit-btn:hover {
+    background-color: rgb(153, 100, 2);
+    border-radius: 10px;
+    border-color: black;
+    color: white;
+}

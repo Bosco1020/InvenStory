@@ -15,6 +15,19 @@
     border-radius: 10px;
     border-color: black;
 }
+.btn.add-btn {
+    background-color: orange;
+    border-radius: 10px;
+    border-color: black;
+    color: black;
+}
+
+.btn.add-btn:hover {
+    background-color: rgb(153, 100, 2);
+    border-radius: 10px;
+    border-color: black;
+    color: white;
+}
 
 .btn.filter-btn:hover {
     background-color: rgb(153, 100, 2);

@@ -61,7 +61,11 @@ const ItemsTable = ({ allItems, isAdmin, open, setOpen }) => {
     }
 
     return (
-      <div className="col-sm-12 col-md-6 col-lg-6" key={item._id}>
+      <div
+        className="col-sm-12 col-md-12 col-lg-6"
+        key={item._id}
+        align="center"
+      >
         <ItemBox
           boxItem={item}
           tagList={allTags}
