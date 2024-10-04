@@ -24,7 +24,11 @@ const ItemTags = ({ tags }) => {
     [];
 
   const tagRows = Array.map((currentTag) => {
-    return <div className="item-tags"> {`> ${currentTag}`},</div>;
+    return (
+      <div className="item-tags" key={currentTag}>
+        {`> ${currentTag}`},
+      </div>
+    );
   });
 
   return (

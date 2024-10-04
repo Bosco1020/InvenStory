@@ -63,3 +63,12 @@ content-type: application/json
     "role": "1",
     "assignedItems": ["Key", "Rope", "Steve", "Poncho"]
 }
+
+###
+PUT HTTP://localhost:3000/auth/addUserItem
+content-type: application/json
+
+{
+    "userName" : "DFUser13",
+    "itemName" : "Cloak of Billowing"
+}

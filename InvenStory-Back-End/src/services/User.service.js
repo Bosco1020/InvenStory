@@ -19,6 +19,19 @@ export default class UserService {
         const result = await User.updateMany({ assignedItems: `${name}` }, {$pull :{assignedItems: `${name}` }}, {multi: true});
 
         return result;
+
+        // delete item form all users:
+        // updateMany({}, { $pull: {assignedItems: itemName}})
+    }
+
+    removeUser = async (body) => {
+        //Find target user - YES
+        // update existing array to NOT contain target - Hmm
+
+        // {$pull: {assignedItems: {$in: body.itemName}}}
+        const result = await User.findOneAndUpdate({ name: body.userName }, { $pull: { assignedItems: body.itemName } });
+        //const result = await User.findOneAndUpdate({ name: body.userName }, { assignedItems: body.assignedItems }, { upsert: true, returnOriginal: false, returnNewDocument: true });
+        return result;
     }
 
     addUser = async (newUser) => {
@@ -41,6 +54,12 @@ export default class UserService {
             throw new Error("Invalid User Details");
         }
         const result = await User.findOneAndUpdate({ name: body.name }, { assignedItems: body.assignedItems }, { upsert: true, returnOriginal: false, returnNewDocument: true });
+        return result;
+    }
+
+    addItem = async (body) => {
+        // Assign an item to a user
+        const result = await User.updateOne({ name: body.userName }, { $push: { assignedItems: body.itemName } }, { upsert: false, returnOriginal: false, returnNewDocument: true });
         return result;
     }
 

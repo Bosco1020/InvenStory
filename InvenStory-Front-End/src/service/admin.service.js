@@ -17,7 +17,7 @@ export const getAllUsers = async (item) => {
         // }
 
         // return list;
-        if (res.data[0] == undefined) res.data[0] = { name: "-none" };
+        // if (res.data[0] == undefined) res.data[0] = { name: "-none" };
         return res.data;
     }
     catch (e) {
@@ -70,9 +70,35 @@ export const deleteItem = async (_id) => {
     }
 }
 
-export const deleteItemFromUsers = async (name) => {
+export const deleteItemFromUsers = async (name) => { // Removes an item from all users assigned items?
+    //? Check what this does...
     try {
         const res = await axios.put(`${URL}/updateUserItems/${name}`, { headers: authToken() });
+        return res.data;
+    }
+    catch (e) {
+        console.log(e.message);
+        return e;
+    }
+}
+
+export const removeUserFromItem = async (user, item) => {
+    try {
+        const res = await axios.put(`${URL}/removeUserFromItem`, { userName: user, itemName: item }, { headers: authToken() });
+        return res.data;
+    }
+    catch (e) {
+        console.log(e.message);
+        return e;
+    }
+}
+// Need to remove an item from any users assigned items, irrespective of current user (so long as admin!)
+// Call PUT on auth, findOneAndUpdate, filter by users name, update items to same -target
+// Use Body, have itemName: X, userName: Y,
+
+export const addItemToUser = async (user, item) => {
+    try {
+        const res = await axios.put(`${URL}/addUserItem`, { userName: user, itemName: item }, { headers: authToken() });
         return res.data;
     }
     catch (e) {

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import ItemDetails from "./ItemDetails.jsx";
 import ItemTags from "./ItemTags.jsx";
+import Users from "./Users.jsx";
 
 import { getAllUsers } from "../service/admin.service.js";
 
@@ -34,7 +35,8 @@ const ItemBox = ({ boxItem, tagList, admin, modal, DeleteItem }) => {
               {admin ? ( // If Admin, shrink item name & tag for room for user details
                 <div className="row">
                   <div className="col-3 ticket-start">
-                    {/* <ItemUsers details={boxItem} allUsers={users} /> */}
+                    {/* <ItemUsers details={boxItem} allUsers={users} /> <Users item={boxItem} />*/}
+                    <Users item={boxItem} />
                   </div>
                   <div className="col-9 ticket-end">
                     <div className="row">
@@ -47,7 +49,7 @@ const ItemBox = ({ boxItem, tagList, admin, modal, DeleteItem }) => {
                         />
                         <div className="container text-left description item-box">
                           <textarea
-                            readonly="true"
+                            readOnly={true}
                             className="form-control"
                             rows="3"
                             id="tagInput"

@@ -35,11 +35,32 @@ export default class UserController {
         }
     }
 
+    addUserItem = async (req, res) => {
+        const error = new Error("Invalid User Details");
+        try {
+            if (!req.body) throw error; //No Body = error
+            const updated = await this.#service.addItem(req.body);
+            if (updated.upsertedCount == 0) throw error; // upserted tracks how many fields altered
+
+            res.status(200).json(updated);
+        }
+        catch (e) {
+            if (e.message === error.message)
+                res.status(400).json({ message: e.message });
+            res.status(500).json({ message: e.message });
+
+            //if error.message === (xyz).message
+            // return 401, error.message
+            // return 500, error.message
+        }
+    }
+
     usersByItem = async (req, res) => {
         const { item } = req.params;
         try {
             const allUsers = await this.#service.getUsersByItem(item);
-            if (!allUsers[0]) throw new Error("ERROR: No Users with that item found in database");
+            // if (!allUsers[0]) throw new Error("ERROR: No Users with that item found in database");
+            if (!allUsers[0]) allUsers[0] = { "name": "-none-" };
                 // throw new Error("ERROR: No Users with that item found in database");
             res.status(200).json(allUsers);
         }
@@ -53,6 +74,15 @@ export default class UserController {
     const { name } = req.params;
     try {
         res.status(200).json(await this.#service.deleteItem(name));
+    }
+    catch (e) {
+        res.status(500).json({ message: e.message });
+        }
+    }
+
+    deleteUserFromItem = async (req, res) => {
+    try {
+        res.status(200).json(await this.#service.removeUser(req.body));
     }
     catch (e) {
         res.status(500).json({ message: e.message });
