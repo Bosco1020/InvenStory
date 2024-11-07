@@ -1,6 +1,6 @@
 import ItemModel from '../../src/utils/Item.model';
 
-test(`It should create the expected object when the constuctor is called`, () => {
+test(`It should create the expected object when the constructor is called`, () => {
     const [_id, name, description, tagList] = [`111`, `Test`, `Test Desc`, ["Test Tag 1", "Test Tag 2"]];
 
     const testItem = new ItemModel(_id, name, description, tagList);

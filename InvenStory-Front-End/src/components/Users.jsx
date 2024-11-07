@@ -1,13 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-import {
-  editItem,
-  addItem,
-  deleteItem,
-  deleteItemFromUsers,
-  getAllUsers,
-} from "../service/admin.service.js";
+import { getAllUsers } from "../service/admin.service.js";
 
 import UserModel from "../utils/user.model.js";
 
@@ -22,14 +16,6 @@ const Users = ({ item }) => {
   const closeAssign = async (stayOpen) => {
     setAssignOpen(false);
     window.location.href = "/";
-    //await refresh();
-    //if (stayOpen) openAssign();
-
-    // const tagList = tags.split(", ");
-    // if (item != null) {
-    //   const res = await editItem(item);
-    //   window.location.href = "/";
-    // } //if(res.name != "-not Found-")
   };
 
   const refresh = async () => {
@@ -42,20 +28,10 @@ const Users = ({ item }) => {
 
   useEffect(() => {
     if (!loading) return;
-    // const buffer = ["-"];
-    // setUserList(buffer);
 
     const getUsers = async () => {
       const allUsers = await getAllUsers(item.name);
       setUserList(allUsers);
-      //   // split by ,
-      //   let list = tags.split(", ");
-      //   if (list.length > 0) list = list.slice(0, list.length - 1);
-      //   else list = "";
-
-      //   if (list[list.length - 1] == "") list = list.slice(0, list.length - 1);
-
-      //   setTagsArray(list);
       setLoading(false);
     };
 

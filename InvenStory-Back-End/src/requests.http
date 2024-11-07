@@ -13,7 +13,6 @@ PUT http://localhost:3000/auth/updateUserItems/Rope
 
 
 ###
-// $2b$08$NWhKaZ7weteIDzo/7IPqyONAQIy/0uPWc3gdM612BH3RACVkyJjrC
 POST http://localhost:3000/auth/signup
 content-type: application/json
 

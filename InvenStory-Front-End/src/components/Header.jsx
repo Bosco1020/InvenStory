@@ -1,6 +1,4 @@
-import { NavLink } from "react-router-dom";
 import React from "react";
-import { useEffect } from "react";
 
 import "./CSS/Header.css";
 
@@ -8,13 +6,6 @@ const Header = ({ loggedIn, updateLogout }) => {
   const logout = () => {
     updateLogout(true);
   };
-
-  useEffect(() => {
-    // if (localStorage.getItem("user")) {
-    //   updatedLoggedIn(true);
-    // } else updatedLoggedIn(false);
-  }),
-    [];
 
   return (
     <header

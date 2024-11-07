@@ -13,18 +13,11 @@ const FilterItems = ({ setOpen, isAdmin }) => {
 
   const [searchParams, setSearchParams] = useSearchParams("");
 
-  const handleFilter = () => {
-    // Filters([nameFilter, tagFilter]);
-    // Filters({ name: nameFilter, tag: tagFilter });
-  };
-
   const closeFilter = async (e) => {
-    // e.handleDefault();
     setFilterOpen(false);
   };
 
   const openFilter = async (e) => {
-    //e.handleDefault();
     setFilterOpen(true);
   };
 
@@ -56,7 +49,7 @@ const FilterItems = ({ setOpen, isAdmin }) => {
           <div className="row">
             <div className="col-sm-12 col-lg-6">
               <div className="container filter-box">
-                <form onSubmit={handleFilter}>
+                <form>
                   <label>
                     Name:
                     <input

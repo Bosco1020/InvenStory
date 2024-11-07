@@ -20,7 +20,7 @@ const ViewItems = () => {
 
   const [addOpen, setAddOpen] = useState(false);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams(); // Automatically populates with search
 
   const user = JSON.parse(localStorage.getItem(`user`));
 
@@ -69,9 +69,16 @@ const ViewItems = () => {
       <br />
       <br />
       {loading ? (
-        <div className="d-flex justify-content-center align-items-center vh-100">
-          <PixelSpinner color="#d4b200" size="300"></PixelSpinner>
-        </div>
+        <>
+          <div className="d-flex justify-content-center align-items-center vh-100">
+            <PixelSpinner
+              color="#d4b200"
+              size="300"
+              data-testid="Spinner"
+            ></PixelSpinner>
+          </div>
+          <>{"Loading..."}</>
+        </>
       ) : (
         <>
           <br />

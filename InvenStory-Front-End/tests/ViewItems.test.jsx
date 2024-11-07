@@ -28,6 +28,13 @@ describe("View Items", () => {
       getUsersItemsData: vi.fn(),
     }));
 
+    vi.mock("../src/components/Users.jsx", () => ({
+      default: {
+        window: vi.fn(),
+      },
+      window: vi.fn(),
+    }));
+
     const testUser = {
       name: "Sammy",
       email: "SammE@example.com",
@@ -57,10 +64,14 @@ describe("View Items", () => {
     });
 
     test("'Loading...' disappears", async () => {
-      const loading = screen.getByText("Loading...");
+      await waitForElementToBeRemoved(() => screen.getByText("Loading..."));
 
-      await waitForElementToBeRemoved(() => screen.getByText(`Loading...`));
+      await waitForElementToBeRemoved(() =>
+        screen.queryAllByText("Loading...")
+      );
+      // Not always necessary as sometimes loads item box before getting to next step
 
+      const loading = await screen.queryByText("Loading...");
       expect(loading).not.toBeInTheDocument();
     });
   });
@@ -96,8 +107,6 @@ describe("View Items", () => {
         wrapper: MemoryRouter,
       });
       await waitForElementToBeRemoved(() => screen.getByText(`Loading...`));
-
-      // await waitForElementToBeRemoved(() => screen.getAllByText(`Loading...`));
     });
 
     test("Renders all item components", async () => {
@@ -134,6 +143,13 @@ describe("View Items", () => {
       getUsersItemsData: vi.fn(),
     }));
 
+    vi.mock("../src/components/Users.jsx", () => ({
+      default: {
+        Users: vi.fn(),
+      },
+      Users: vi.fn(),
+    }));
+
     const testUser = {
       name: "Sammy",
       email: "SammE@example.com",
@@ -155,12 +171,10 @@ describe("View Items", () => {
         wrapper: MemoryRouter,
       });
       await waitForElementToBeRemoved(() => screen.getByText(`Loading...`));
-
-      // await waitForElementToBeRemoved(() => screen.getAllByText(`Loading...`));
     });
 
     test("Renders all item components", async () => {
-      const ItemCount = screen.getAllByText("Sample Test");
+      const ItemCount = screen.getAllByText("Sample Test"); //screen.getAllByTestId("Test Item");
       expect(ItemCount.length).toEqual(dbItems.length);
     });
 

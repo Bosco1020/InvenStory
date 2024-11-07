@@ -27,7 +27,6 @@ describe('External Data Tests', () => {
 
             test('should call axios.get once with supplied URL', async () => {
                 expect(axiosMock.get).toHaveBeenCalledTimes(1);
-                // expect(axiosMock.get).toHaveBeenCalledWith(`${import.meta.env.VITE_APP_API_URL}/allitems`);
             });
 
             test('should return sample items when valid data is returned from server', async () => {
@@ -75,13 +74,6 @@ describe('External Data Tests', () => {
         })
 
         describe('POST retrieve items assigned to user', () => {
-            // const testSubmittedTodo = {
-            //     todoDescription: `New Test Todo`,
-            //     todoDateCreated: new Date().toUTCString(),
-            //     todoCompleted: false
-            // }
-            
-            // const test_id = generateTodoId();
 
             test('should call axios post with correct URL and data', async () => {
                 const User = JSON.parse(localStorage.getItem(`user`));
@@ -91,7 +83,6 @@ describe('External Data Tests', () => {
                 functionResult = await getUsersItemsData(User);
 
                 expect(axiosMock.post).toHaveBeenCalledTimes(1);
-                // expect(axiosMock.post).toHaveBeenCalledWith(import.meta.env.VITE_APP_API_URL, User, );
                 
             });
 
@@ -116,36 +107,6 @@ describe('External Data Tests', () => {
 
                 expect(functionResult.message).toBe(expectedReturn.message);
             });
-        // });
-
-    //     describe('Update todo tests', () => {
-
-    //         const updatedTodo = { ...sampleTodos[3], todoCompleted: true };
-
-    //         test('should call axios put with correct URL and data', async () => {
-
-    //             functionResult = await submitTodoService(updatedTodo);
-
-    //             expect(axiosMock.put).toHaveBeenCalledTimes(1);
-    //             expect(axiosMock.put).toHaveBeenCalledWith(`${import.meta.env.VITE_TODOSURL}/${sampleTodos[3]._id}`, updatedTodo);
-                
-    //         });
-
-    //         test('should return the correct data with successful PUT call', async () => {
-    //             axiosMock.put.mockResolvedValueOnce({ data: updatedTodo });
-
-    //             functionResult = await submitTodoService(updatedTodo);
-                
-    //             expect(functionResult.todo).toEqual(updatedTodo);
-    //         });
-
-    //         test('should return an Error object with provided error message', async () => {
-    //             const expectedReturn = new Error(`Test PUT Error`);
-    //             axiosMock.put.mockRejectedValueOnce(expectedReturn);
-    //             functionResult = await submitTodoService(updatedTodo);
-
-    //             expect(functionResult.message).toBe(expectedReturn.message);
-            // });
         });
     });
 });

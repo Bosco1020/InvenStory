@@ -5,20 +5,14 @@ import ItemDetails from "./ItemDetails.jsx";
 import ItemTags from "./ItemTags.jsx";
 import Users from "./Users.jsx";
 
-import { getAllUsers } from "../service/admin.service.js";
-
 import "./CSS/ItemBox.css";
 
 const ItemBox = ({ boxItem, tagList, admin, modal, DeleteItem }) => {
-  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!loading) return;
     const getUsers = async () => {
-      // const allUsers = await getAllUsers(boxItem.name);
-      // //   console.log(allUsers);
-      // setUsers(allUsers);
       setLoading(false);
     };
 
@@ -35,12 +29,10 @@ const ItemBox = ({ boxItem, tagList, admin, modal, DeleteItem }) => {
               {admin ? ( // If Admin, shrink item name & tag for room for user details
                 <div className="row">
                   <div className="col-3 ticket-start">
-                    {/* <ItemUsers details={boxItem} allUsers={users} /> <Users item={boxItem} />*/}
                     <Users item={boxItem} />
                   </div>
                   <div className="col-9 ticket-end">
                     <div className="row">
-                      {/* partition end ticket into description and tags */}
                       <div className="col-8 ticket-centre">
                         <ItemDetails
                           details={boxItem}
@@ -97,7 +89,6 @@ const ItemBox = ({ boxItem, tagList, admin, modal, DeleteItem }) => {
               ) : (
                 //Not an admin, so render item at full size
                 <div className="row ticket-end user-ticket">
-                  {/* partition end ticket into description and tags */}
                   <div className="col-12">
                     <div className="row">
                       <div className="col-8 ticket-centre">
@@ -134,7 +125,5 @@ const ItemBox = ({ boxItem, tagList, admin, modal, DeleteItem }) => {
     </div>
   );
 };
-//       <ItemDetails details={boxItem} tags={tagList} isAdmin={admin} />
 
-// <ItemUsers details={boxItem} />
 export default ItemBox;

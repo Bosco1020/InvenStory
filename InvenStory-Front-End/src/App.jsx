@@ -69,6 +69,4 @@ const App = () => {
   );
 };
 
-// !loggedIn ? <Login setLoggedIn={changeLoggedIn} /> : <ViewItems />
-
 export default App;

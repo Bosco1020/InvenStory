@@ -5,7 +5,6 @@ import bcrypt from "bcrypt";
 export default class UserService {    
 
     getUser = async (id) => {
-        //const result = await User.find({_id: id});
         const result = await User.find({_id: id});
         return result;
     }
@@ -19,18 +18,11 @@ export default class UserService {
         const result = await User.updateMany({ assignedItems: `${name}` }, {$pull :{assignedItems: `${name}` }}, {multi: true});
 
         return result;
-
-        // delete item form all users:
-        // updateMany({}, { $pull: {assignedItems: itemName}})
     }
 
     removeUser = async (body) => {
-        //Find target user - YES
-        // update existing array to NOT contain target - Hmm
-
-        // {$pull: {assignedItems: {$in: body.itemName}}}
+        // $pull removes all matching items from the array
         const result = await User.findOneAndUpdate({ name: body.userName }, { $pull: { assignedItems: body.itemName } });
-        //const result = await User.findOneAndUpdate({ name: body.userName }, { assignedItems: body.assignedItems }, { upsert: true, returnOriginal: false, returnNewDocument: true });
         return result;
     }
 

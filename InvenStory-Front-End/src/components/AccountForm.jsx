@@ -62,7 +62,6 @@ const AccountForm = ({ changeLoggedIn, newAccount, setLogout, user }) => {
 
     let response;
     if (!newAccount) {
-      //? Render spinner here, then disable after await response
       response = await login(userName, email, password);
       if (localStorage.getItem("user")) {
         user(response);
@@ -185,9 +184,5 @@ const AccountForm = ({ changeLoggedIn, newAccount, setLogout, user }) => {
     </div>
   );
 };
-
-// disabled={() => {
-//                 return newAccount || (goodEmail && goodPassword);
-//               }}
 
 export default AccountForm;

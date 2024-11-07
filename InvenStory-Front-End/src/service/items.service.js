@@ -28,11 +28,3 @@ export const getUsersItemsData = async (user) => {
         return e;
     }
 };
-
-        // const user = { name: name, email: email, password: password };
-        // const res = await axios.post(`${URL}/login`, user);
-        //get("/item/:id")
-        //post("/item")
-
-        //get("/auth/user/:_id")
-        //put("/auth/updateUserItems")

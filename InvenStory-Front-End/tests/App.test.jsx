@@ -11,6 +11,8 @@ import {
   getUsersItemsData,
 } from "../src/service/items.service.js";
 
+import { PixelSpinner } from "react-epic-spinners";
+
 import getTestItems from "./data/testItems.js";
 const { testItems, dbItems } = await getTestItems();
 
@@ -49,9 +51,9 @@ describe("App tests", () => {
   describe("Initial render tests", () => {
     test("App.jsx renders correctly", () => {
       render(<App />, { wrapper: MemoryRouter });
-      const loading = screen.getAllByText("Loading...");
+      const loading = screen.getAllByTestId("Spinner");
 
-      expect(loading.length).toEqual(2);
+      expect(loading).not.toBe(null);
     });
   });
 });

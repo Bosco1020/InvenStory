@@ -261,14 +261,6 @@ describe("Items Tests", () => {
     });
 
     describe("DELETE '/item'", async () => {
-        // let changedItem4;
-
-        beforeEach(async () => {
-            // let all = await request.get("/item/allitems");
-            // let id = all.body[4]._id;
-            // changedItem4 = { ...dbItems[4], _id: id };
-            // changedItem4 = { ...changedItem4, tagList: ["Item"] };
-        })
 
         it("Responds with HTTP 200 if successful", async () => {
             // Arrange

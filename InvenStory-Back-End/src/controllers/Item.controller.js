@@ -22,7 +22,6 @@ export default class ItemController {
         const { id } = req.params;
         try {
             const result = await this.#service.getItem(id);
-            //if (!result) throw new Error("ERROR: User Items not found in database");
             res.status(200).json(result);
         }
         catch (e) {
@@ -45,7 +44,6 @@ export default class ItemController {
         try {
             if (!req.body) throw new Error("ERROR: Empty Request");
             const newItem = await this.#service.addItem(req.body);
-            //if (!newItem._id) { res.status(403).json({ message: "Item already in Database" }); return; }
             if (!newItem) throw new Error("ERROR: Item not created in database");
             res.status(201).json(newItem); //Return 201 for successfully created & object
         }

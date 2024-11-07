@@ -30,5 +30,3 @@ const filterTag = (list, filter) => {
   }
   return result;
 }
-
-//export default filterByTag

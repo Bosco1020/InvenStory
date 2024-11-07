@@ -8,12 +8,6 @@ import { afterEach, beforeEach } from "vitest";
 
 vi.mock('axios');
 
-    //post("/auth/login", UserValidator.validateUser(), this.#userController.login)
-
-    //put("/auth/updateUserItems", UserValidator.validateUser(), this.#userController.updateUserItems)
-
-    //post("/auth/signup", UserValidator.validateUser(), this.#userController.addUser)
-
 describe('Authentication Services Tests', () => {
    
     let functionResult;   

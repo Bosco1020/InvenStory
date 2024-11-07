@@ -8,8 +8,6 @@ import UserModel from "../utils/user.model.js";
 
 import { addItemToUser } from "../service/admin.service.js";
 
-// import "./CSS/Modal.css";
-
 const ManageUsersModal = ({ CloseModal, Users, Item }) => {
   const [userList, setUserList] = useState([]);
   const [loading, setLoading] = useState(true);

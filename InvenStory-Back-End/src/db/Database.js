@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 export default class Database {
-    // #connectionAttempts = 0;
     #uri;
 
     constructor(uri) {

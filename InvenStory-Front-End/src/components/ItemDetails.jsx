@@ -10,11 +10,4 @@ const ItemDetails = ({ details, tags }) => {
   );
 };
 
-{
-  /* <div className="tags-box">
-  <span className="item-tags bold">Tags: </span>
-  <span className="item-tags">{`${tags}`}</span>
-</div>; */
-}
-
 export default ItemDetails;

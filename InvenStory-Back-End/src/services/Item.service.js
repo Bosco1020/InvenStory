@@ -19,12 +19,6 @@ export default class ItemService {
         }
 
         return items;
-
-        // return await Item.find({ name: user.assignedItems })
-        
-//         const cursor = db.collection('inventory').find({
-//   tags: { $all: ['red', 'blank'] }
-// });
     }
 
     addItem = async (newItem) => {

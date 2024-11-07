@@ -25,9 +25,6 @@ export default class UserController {
         try {
             if (!req.body) throw error; //No Body = error
             const updated = await this.#service.updateItems(req.body);
-            //const updated = await this.#service.findItem();
-
-            //if (!updated._id) throw new Error("ERROR: User not found in database");
             res.status(200).json(updated);
         }
         catch (e) {
@@ -48,10 +45,6 @@ export default class UserController {
             if (e.message === error.message)
                 res.status(400).json({ message: e.message });
             res.status(500).json({ message: e.message });
-
-            //if error.message === (xyz).message
-            // return 401, error.message
-            // return 500, error.message
         }
     }
 
@@ -59,9 +52,7 @@ export default class UserController {
         const { item } = req.params;
         try {
             const allUsers = await this.#service.getUsersByItem(item);
-            // if (!allUsers[0]) throw new Error("ERROR: No Users with that item found in database");
             if (!allUsers[0]) allUsers[0] = { "name": "-none-" };
-                // throw new Error("ERROR: No Users with that item found in database");
             res.status(200).json(allUsers);
         }
         catch (e) {
@@ -109,13 +100,9 @@ export default class UserController {
         try {
             const user = await this.#service.login(req.body);
             if (!user.accessToken) { throw error; }
-            //res.json(user);
             res.header("X-Access-Token", user.accessToken).status(200).json(user);
         } catch (error) {
             res.status(401).json(error);
-            //if error.message === (xyz).message
-            // return 401, error.message
-            // return 500, error.message
         }
         return res;
     }

@@ -13,10 +13,6 @@ import {
 import { signUp } from "../src/service/auth.service.js";
 
 describe("Account Form Tests", () => {
-  // Submit only functions if Email & Password are valid
-  // Should redirect to home if successful
-  // Expect a successful Submission to return HTTP 200? and the User Info
-
   describe("SignUp form Tests", () => {
     vi.mock("../src/middleware/form.validation.js", () => ({
       default: {
@@ -40,25 +36,7 @@ describe("Account Form Tests", () => {
       signUp: vi.fn(),
     }));
 
-    //! Old mock of function, maybe useful later?
-    // vi.mock("../src/components/AccountForm.jsx", () => {
-    //   return ({ updateEmailValidation }) => {
-    //     const handleChange = vi.fn((event) => {
-    //       updateEmailValidation("Invalid");
-    //     });
-
-    //     return <input type="text" onChange={handleChange} />;
-    //   };
-    // });
-
     beforeEach(() => {
-      //   validatePassword.mockClear();
-      //   validatePassword.mockResolvedValue();
-
-      //   validateEmail.mockClear();
-      //   validateEmail.mockResolvedValue();
-
-      // changeLoggedIn, newAccount, setLogout, user
       render(
         <SignUp
           setLoggedIn={() => {}}
@@ -72,11 +50,6 @@ describe("Account Form Tests", () => {
     });
 
     test("Error message appears if email isn't valid", async () => {
-      //   validateEmail.mockClear();
-      //   validatePassword.mockClear();
-      //   validatePassword.mockResolvedValue("Invalid");
-      //   validateEmail.mockResolvedValue("Invalid");
-
       const emailInput = screen.queryByPlaceholderText("example@email.com");
 
       await userEvent.type(emailInput, "badMail");
@@ -148,25 +121,8 @@ describe("Account Form Tests", () => {
 
       expect(signUp).not.toHaveBeenCalled();
     });
-
-    // test("Submit works if all fields are valid", async () => {
-    //   signUp.mockClear();
-    //   signUp.mockResolvedValue({ _id: "an id" });
-
-    //   const submitBtn = screen.getByText("Submit");
-    //   const emailInput = screen.queryByPlaceholderText("example@email.com");
-    //   const nameInput = screen.queryByPlaceholderText("YourName");
-    //   const passwordInput = screen.queryByPlaceholderText("Enter Password");
-
-    //   await userEvent.type(emailInput, "Email@good.com");
-    //   await userEvent.type(passwordInput, "GoodP@55word1");
-    //   await userEvent.type(nameInput, "YourName");
-
-    //   await userEvent.click(submitBtn);
-
-    //   expect(signUp).toHaveBeenCalled();
-    // });
   });
+
   describe("Login form Tests", () => {
     vi.mock("../src/middleware/form.validation.js", () => ({
       default: {

@@ -25,11 +25,10 @@ const ItemsTable = ({ allItems, isAdmin, open, setOpen }) => {
 
   const closeEdit = async (item) => {
     setEditOpen(false);
-    // const tagList = tags.split(", ");
     if (item != null) {
       const res = await editItem(item);
       window.location.href = "/";
-    } //if(res.name != "-not Found-")
+    }
   };
 
   const closeAdd = async (item) => {
@@ -55,7 +54,6 @@ const ItemsTable = ({ allItems, isAdmin, open, setOpen }) => {
       currentItem.tagList
     );
     let allTags = "";
-    // allTags = item.tagsList; Object.keys(data.shareInfo[i]).length
     for (let i = 0; i < currentItem.tagList.length; i++) {
       allTags += currentItem.tagList[i] + ", ";
     }
@@ -73,6 +71,7 @@ const ItemsTable = ({ allItems, isAdmin, open, setOpen }) => {
           admin={isAdmin}
           modal={openEdit}
           DeleteItem={deleteItemButton}
+          data-testid="Test Item"
         />
       </div>
     );

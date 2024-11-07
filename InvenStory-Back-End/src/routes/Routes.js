@@ -46,7 +46,7 @@ export default class Routes {
 
         this.#router.delete("/item/:_id", this.#itemController.deleteItem)
 
-        this.#router.post("/item", ItemValidator.validateItem(), this.#itemController.addItem) //! Check with item validator
+        this.#router.post("/item", ItemValidator.validateItem(), this.#itemController.addItem)
     }
 
     getRouter = () => {

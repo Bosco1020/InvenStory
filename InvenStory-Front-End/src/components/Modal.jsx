@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./CSS/Modal.css";
 
+// isNew defines whether we're adding a new item of editing an existing one
 const Modal = ({ CloseModal, item, isNew }) => {
   const [loading, setLoading] = useState(true);
 

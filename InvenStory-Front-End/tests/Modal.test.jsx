@@ -30,7 +30,7 @@ describe("Edit Modal Tests", () => {
     const name = screen.queryByPlaceholderText("Item Name");
     const description = screen.queryByPlaceholderText("Add a description");
     const tags = screen.queryByPlaceholderText(
-      "Add Tags Here. Separate, With, A, Comma"
+      "Add Tags Here: Separate, Each, With, A, Comma"
     );
 
     expect(name.value).toEqual(testItems[0].name);
@@ -79,7 +79,7 @@ describe("Add Modal Tests", () => {
     const name = screen.queryByPlaceholderText("Item Name");
     const description = screen.queryByPlaceholderText("Add a description");
     const tags = screen.queryByPlaceholderText(
-      "Add Tags Here. Separate, With, A, Comma"
+      "Add Tags Here: Separate, Each, With, A, Comma"
     );
 
     expect(name.value).toEqual("");
